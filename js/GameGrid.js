@@ -1,4 +1,4 @@
-//CALSim Logic
+//WireWorld Logic
 //Author: Kyle Hovey
 
 class GameGrid {

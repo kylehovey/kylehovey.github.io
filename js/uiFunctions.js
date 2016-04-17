@@ -1,4 +1,4 @@
-//CALSim UI Functions
+//WireWorld UI Functions
 //Author: Kyle Hovey
 
 function showHelp(){
