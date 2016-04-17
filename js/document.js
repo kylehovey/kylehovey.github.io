@@ -1,4 +1,4 @@
-//CALSim Document Script
+//WireWorld Document Script
 //Author: Kyle Hovey
 
 // ===== DOCUMENT ON READY ===== //
