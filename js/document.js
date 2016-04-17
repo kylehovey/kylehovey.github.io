@@ -150,7 +150,7 @@ $(function(){
 	})
 	
 	$(document).on("keydown", function(event){
-		if (event.keyCode == 69){
+		if (event.keyCode == 69 || event.keyCode == 18){
 			//Start painting electrons
 			paintValue = 2;
 		}
@@ -216,8 +216,8 @@ $(function(){
 			if (!helpDisplayed){
 				showHelp();
 			}
-		}else if (event.keyCode == 69){
-			//Stop painting electrons
+		}else if (event.keyCode == 69 || event.keyCode == 18 || event.keyCode == 16){
+			//Stop painting electrons or erasing
 			paintValue = 1;
 		}
 	});
