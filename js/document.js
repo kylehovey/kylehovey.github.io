@@ -1,5 +1,6 @@
 //WireWorld Document Script
 //Author: Kyle Hovey
+"use strict";
 
 // ===== DOCUMENT ON READY ===== //
 $(function(){

@@ -1,5 +1,6 @@
 //Class definition for game cell
 //Author: Kyle Hovey
+"use strict";
 
 class Cell {
     constructor(){

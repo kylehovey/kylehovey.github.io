@@ -1,5 +1,6 @@
 //WireWorld UI Functions
 //Author: Kyle Hovey
+"use strict";
 
 function showHelp(){
 	swal({
