@@ -22,7 +22,7 @@ $(function(){
 	intro += 'Conductor --> Electron Head<br />';
 	//RULES
 	rules += '<b>At any time, you may press "<b>h</b>" to bring up this dialog.</b>';
-	rules += '<br /><br /><u><b>Basic Commands:</b></u>';
+	rules += '<br /><u><b>Basic Commands:</b></u>';
 	rules += '<br /><b>Spacebar:</b> Pause/Play Simulation';
 	rules += '<br /><b>Left Click</b>: Add Conductor';
 	rules += '<br /><b>Alt + Left Click</b>: Add Electron Head';
@@ -33,20 +33,20 @@ $(function(){
 	rules += '<br /><b>+</b>: Speed Up Simulation';
 	rules += '<br /><b>-</b>: Slow Down Simulation';
 	rules += '<br /><b>s</b>: Advance One Generation';
-	rules += '<br /><br /><u><b>Copying:</b></u>';
+	rules += '<br /><u><b>Copying:</b></u>';
 	rules += '<br />To start copying, press  "<b>y</b>" and click on one';
 	rules += '<br />corner of the region you want to duplicate,';
 	rules += '<br />then lastly on the opposite corner. This will';
 	rules += '<br />store your selection in the clipboard.';
-	rules += '<br /><br /><u><b>Pasting:</b></u>';
+	rules += '<br /><u><b>Pasting:</b></u>';
 	rules += '<br />To start pasting, press  "<b>p</b>" and';
 	rules += '<br />click on where you want to paste your clipboard.';
-	rules += '<br /><br /><u><b>Pasting:</b></u>';
+	rules += '<br /><u><b>Deleting:</b></u>';
 	rules += '<br />To start deleting, press  "<b>d</b>" and';
 	rules += '<br />select a region in the same way you would when';
 	rules += '<br />using the copying feature. All cells within this';
 	rules += '<br />region will be deleted.';
-	rules += '<br /><br />Check out <a href="http://www.quinapalus.com/wi-index.html">quinapalus</a> for circuit ideas and more in-depth info.';
+	rules += '<br />Check out <a href="http://www.quinapalus.com/wi-index.html">quinapalus</a> for circuit ideas and more in-depth info.';
 	
 	//Show the intro and rules
 	swal({
