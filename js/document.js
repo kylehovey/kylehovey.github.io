@@ -103,7 +103,6 @@ $(function(){
 		if (!painting && !copying && !pasting && !deleting){
 			//Paint with the mouse
 			paintValue = event.shiftKey ? 0 : paintValue;
-			paintValue = event.altKey ? 2 : paintValue;
 			dragID = setInterval(function(){
 				board.set(mouse, paintValue);
 			}, 1);
