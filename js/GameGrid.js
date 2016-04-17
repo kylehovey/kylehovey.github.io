@@ -105,8 +105,13 @@ class GameGrid {
 
 	//Reset all cells contained within box
 	resetCellsInBox(){
-		for (var i = this.box.start.x; i < this.box.end.x; i++){
-			for (var j = this.box.start.y; j < this.box.end.y; j++){
+		//Make sure that we have the right region
+		var startX = this.box.start.x < this.box.end.x ? this.box.start.x : this.box.end.x;
+		var endX = this.box.start.x < this.box.end.x ? this.box.end.x : this.box.start.x;
+		var startY = this.box.start.y < this.box.end.y ? this.box.start.y : this.box.end.y;
+		var endY = this.box.start.y < this.box.end.y ? this.box.end.y : this.box.start.y;
+		for (var i = startX; i < endX; i++){
+			for (var j = startY; j < endY; j++){
 				this.cells[i][j].state = 0;
 				this.cells[i][j].next = 0;
 			}
@@ -195,10 +200,16 @@ class GameGrid {
 
 	//Set the clipboard for this board
 	setClipboard(){
+		//Make sure we have the right region
+		var startX = this.box.start.x < this.box.end.x ? this.box.start.x : this.box.end.x;
+		var endX = this.box.start.x < this.box.end.x ? this.box.end.x : this.box.start.x;
+		var startY = this.box.start.y < this.box.end.y ? this.box.start.y : this.box.end.y;
+		var endY = this.box.start.y < this.box.end.y ? this.box.end.y : this.box.start.y;
+
 		//Get the selected area and copy it to temp
-		this.clipboard = this.cells.slice(this.box.start.x, this.box.end.x);
+		this.clipboard = this.cells.slice(startX, endX);
 		$.each(this.clipboard, function(x, col){
-			this.clipboard[x] = JSON.parse(JSON.stringify(col.slice(this.box.start.y, this.box.end.y)));
+			this.clipboard[x] = JSON.parse(JSON.stringify(col.slice(startY, endY)));
 		}.bind(this));
 	}
 
