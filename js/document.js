@@ -9,7 +9,7 @@ $(function(){
 	helpDisplayed = false;
 	//INTRO
 	intro += '<hr>This is a Wireworld interpreter written for Chrome.<br /><br />';
-	intro += '<a href="https://en.wikipedia.org/wiki/Wireworld">Wireworld</a> ';
+	intro += '<a href="https://en.wikipedia.org/wiki/Wireworld" target="_blank">Wireworld</a> ';
 	intro += 'is a cellular automata capable of modeling <br />';
 	intro += 'combinational logic circuits. With surprisingly<br />';
 	intro += 'few rules, this CA is fully turing complete.<br />';
@@ -46,7 +46,7 @@ $(function(){
 	rules += '<br />select a region in the same way you would when';
 	rules += '<br />using the copying feature. All cells within this';
 	rules += '<br />region will be deleted.';
-	rules += '<br />Check out <a href="http://www.quinapalus.com/wi-index.html">quinapalus</a> for circuit ideas and more in-depth info.';
+	rules += '<br />Check out <a href="http://www.quinapalus.com/wi-index.html" target="_blank">quinapalus</a> for circuit ideas and more in-depth info.';
 	
 	//Show the intro and rules
 	swal({
