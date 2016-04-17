@@ -1,6 +1,5 @@
 //WireWorld Logic
 //Author: Kyle Hovey
-"use strict";
 
 class GameGrid {
 	constructor(canvasID, cellSize = 10){
