@@ -71,7 +71,7 @@ $(function(){
 	painting = false;
 	runID = null;
 	dragID = null;
-	delay = 30;
+	delay = 50;
 
 	//Editing variables
 	copying = 0;
