@@ -31,8 +31,9 @@ class GameGrid {
 
 	//Activate cell at pixel-wise coords
 	set(coords, value){
-		this.get(Math.floor(coords.x/this.cellSize), Math.floor(coords.y/this.cellSize)).state = value;
-		this.get(Math.floor(coords.x/this.cellSize), Math.floor(coords.y/this.cellSize)).next = value;
+		var tempCell = this.get(Math.floor(coords.x/this.cellSize), Math.floor(coords.y/this.cellSize));
+		tempCell.state = value;
+		tempCell.next = value;
 		this.draw();
 	}
 

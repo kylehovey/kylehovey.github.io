@@ -23,9 +23,9 @@ $(function(){
 	//RULES
 	rules += '<b>At any time, you may press "<b>h</b>" to bring up this dialog.</b>';
 	rules += '<br /><u><b>Basic Commands:</b></u>';
-	rules += '<br /><b>Spacebar:</b> Pause/Play Simulation';
+	rules += '<br /><b>Spacebar</b>: Pause/Play Simulation';
 	rules += '<br /><b>Left Click</b>: Add Conductor';
-	rules += '<br /><b>Alt + Left Click</b>: Add Electron Head';
+	rules += '<br /><b>e + Left Click</b>: Add Electron Head';
 	rules += '<br /><b>Shift + Left Click</b>: Delete Cell';
 	rules += '<br />Note: You can click and drag to paint cells.';
 	rules += '<br /><b>c</b>: Delete All Electrons Heads/Tails';
@@ -66,6 +66,7 @@ $(function(){
 	board.draw();
 
 	//Runtime variables
+	paintValue = 1;
 	running = false;
 	painting = false;
 	runID = null;
@@ -101,10 +102,9 @@ $(function(){
 		//If we already aren't painting, or copying, or pasting, or deleting
 		if (!painting && !copying && !pasting && !deleting){
 			//Paint with the mouse
-			var value = event.shiftKey ? 0 : 1;
-			var value = event.altKey ? 2 : value;
+			paintValue = event.shiftKey ? 0 : paintValue;
 			dragID = setInterval(function(){
-				board.set(mouse, value);
+				board.set(mouse, paintValue);
 			}, 1);
 			painting = true;
 		}else if (copying == 1){
@@ -149,7 +149,12 @@ $(function(){
 		}
 	})
 	
-	$(document).on("keyup", function(event){
+	$(document).on("keydown", function(event){
+		if (event.keyCode == 69){
+			//Start painting electrons
+			paintValue = 2;
+		}
+	}).on("keyup", function(event){
 		if (event.keyCode == 0 || event.keyCode == 32){
 			//Pause or play with space bar
 			if (running){
@@ -211,6 +216,9 @@ $(function(){
 			if (!helpDisplayed){
 				showHelp();
 			}
+		}else if (event.keyCode == 69){
+			//Stop painting electrons
+			paintValue = 1;
 		}
 	});
 });
