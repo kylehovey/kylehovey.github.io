@@ -10,7 +10,7 @@ $(function(){
 	//INTRO
 	intro += '<hr>This is a Wireworld interpreter written for Chrome.<br /><br />';
 	intro += '<a href="https://en.wikipedia.org/wiki/Wireworld" target="_blank">Wireworld</a> ';
-	intro += 'is a cellular automata capable of modeling <br />';
+	intro += 'is a cellular automaton capable of modeling <br />';
 	intro += 'combinational logic circuits. With surprisingly<br />';
 	intro += 'few rules, this CA is fully turing complete.<br />';
 	intro += '<br /><b>Cell States:</b><br />Conductor (orange)';
