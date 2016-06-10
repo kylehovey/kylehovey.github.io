@@ -1,3 +1,14 @@
+/* Built-In Tag Style */
+
 body {
-	background-color: slategrey;
+	background: slategrey;
+	background: linear-gradient(steelBlue, slateBlue);
+	overflow: hidden;
+}
+
+/* Fruit of Life Background */
+
+#fruitOfLife {
+	width: 100%;
+	height: 100%;
 }
