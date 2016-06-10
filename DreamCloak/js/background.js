@@ -1,15 +1,17 @@
 // Code to generate seed-of-life background visuals for main page
 $(function(){
 	//Create the canvas and get context
-	var canvas = document.getElementById("fruitOfLife");
+	canvas = document.getElementById("fruitOfLife");
 	var ctx = canvas.getContext("2d");
 
 	//Set the width and height
 	ctx.canvas.width = window.innerWidth;
 	ctx.canvas.height = window.innerHeight;
 
-	//Create fruit of life
-	growFruit(ctx, 80);
+	//Make sure we can resize the canvas
+	window.addEventListener('resize', resizeCanvas, false);
+	window.addEventListener('orientationchange', resizeCanvas, false);
+	resizeCanvas();
 });
 
 function circle(ctx, x, y, r, width=1, color='rgba(255,255,255,0.5)'){
@@ -29,13 +31,19 @@ function horizontalCircles(ctx, r, h=0, k=0){
 
 function growFruit(ctx, r){
 	var v = Math.round(ctx.canvas.height);
-	var h = 0;
-	var k = 0;
 	var dx = r*Math.cos(-Math.PI/3);
 	var dy = -r*Math.sin(-Math.PI/3);
+	var h = -dx;
+	var k = 0;
 	for (var j = 0; j < v; j++){
 		horizontalCircles(ctx, r, h, k);
 		h += dx*Math.pow(-1,j);
 		k += dy;
 	}
+}
+
+function resizeCanvas(){
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	growFruit(canvas.getContext('2d'), 80);
 }
