@@ -43,10 +43,8 @@ function growFruit(ctx, r){
 }
 
 function resizeCanvas(){
+	alert(canvas);
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-	var renderStart = new Date().getTime();
 	growFruit(canvas.getContext('2d'), 80);
-	var elapsed = new Date().getTime()-renderStart;
-	console.log('Rendered in ' + elapsed + 'ms');
 }
