@@ -2,11 +2,7 @@
 
 body {
 	background: slategrey;
-	background: #2395b2; /* Old browsers */
-	background: -moz-linear-gradient(top,  #2395b2 0%, #2989d8 31%, #207cca 55%, #1f26e2 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  #2395b2 0%,#2989d8 31%,#207cca 55%,#1f26e2 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #2395b2 0%,#2989d8 31%,#207cca 55%,#1f26e2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2395b2', endColorstr='#1f26e2',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(steelBlue, slateBlue);
 	overflow: hidden;
 }
 
