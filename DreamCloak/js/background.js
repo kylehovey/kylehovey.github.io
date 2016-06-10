@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	resizeCanvas();
 });
 
-function circle(ctx, x, y, r, width=1, color='rgba(255,255,255,0.15)'){
+function circle(ctx, x, y, r, width=1, color='rgba(0,0,0,0.15)'){
 	ctx.beginPath();
 	ctx.arc(x, y, r, 0, 2*Math.PI, false);
 	ctx.lineWidth = width;
