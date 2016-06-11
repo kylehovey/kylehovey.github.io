@@ -23,6 +23,8 @@ hr {
 	border-radius: 20px 20px;
 	overflow: hidden;
 	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 #title {
