@@ -11,6 +11,12 @@ hr {
 
 /* UI Style */
 
+.big-logo {
+	width: 20%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #ui-container {
 	background-color: rgba(255, 255, 255, 0.4);
 	border-radius: 20px 20px;
