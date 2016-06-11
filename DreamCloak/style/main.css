@@ -3,6 +3,7 @@
 body {
 	background: steelBlue !important;
 	background-image: url("../images/seedoflife.png") !important;
+	background-attachment: fixed;
 }
 
 hr {
@@ -20,6 +21,8 @@ hr {
 #ui-container {
 	background-color: rgba(255, 255, 255, 0.4);
 	border-radius: 20px 20px;
+	overflow: hidden;
+	margin-top: 20px;
 }
 
 #title {
