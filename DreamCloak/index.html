@@ -10,6 +10,7 @@
 		<!-- CSS Includes -->
 		<link rel="stylesheet" href="./style/jquery-ui.css">
 		<link rel="stylesheet" href="./style/bootstrap.css">
+		<link rel="stylesheet" href="./style/bootstrap-select.css">
 
 		<!-- User Styles -->
 		<link rel="stylesheet" href="./style/main.css">
@@ -36,16 +37,28 @@
 			</div>
 			<div class="row" id="select-category">
 				<div class="col-xs-6">
-					<button class="btn btn-primary bolded category" id="animated">
+					<button class="btn btn-primary bolded category" id="constant">
 						Constant<br />
 						<span class="glyphicon glyphicon-triangle-bottom"></span>
 					</button>
 				</div>
 				<div class="col-xs-6">
-					<button class="btn btn-primary bolded category" id="constant">
+					<button class="btn btn-primary bolded category" id="animated">
 						Animated<br />
 						<span class="glyphicon glyphicon-triangle-bottom"></span>
 					</button>
+				</div>
+			</div>
+			<div class="row" id="select-mode">
+				<div class="col-xs-12">
+					<select class="selectpicker" id="mode" data-style="btn-info" data-width="70%">
+					</select>
+				</div>
+			</div>
+			<div class="row" id="mode-menu">
+				<div class="col-xs-12">
+					<select class="selectpicker" id="mode">
+					</select>
 				</div>
 			</div>
 		</div>
@@ -54,6 +67,7 @@
 		<script type="text/javascript" src="./js/jquery.js"></script>
 		<script type="text/javascript" src="./js/underscore.js"></script>
 		<script type="text/javascript" src="./js/bootstrap.js"></script>
+		<script type="text/javascript" src="./js/bootstrap-select.js"></script>
 		<script type="text/javascript" src="./js/p5.js"></script>
 
 		<!-- User Scripts -->
