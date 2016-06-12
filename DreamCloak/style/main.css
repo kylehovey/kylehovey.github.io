@@ -23,14 +23,30 @@ hr {
 	border-radius: 20px 20px;
 	overflow: hidden;
 	margin-top: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
 }
 
 #title {
 	text-align: center;
 }
 
+#start {
+	width: 200px;
+	height: 100px;
+	margin-bottom: 20px;
+	background-color: steelBlue;
+	border-radius: 40px 40px;
+}
+
+button.btn.btn-primary.bolded {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 2em;
+}
+
 span.dc-name {
 	color: slateBlue;
+}
+
+div.select-category {
+	text-align: center;
 }
