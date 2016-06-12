@@ -32,21 +32,35 @@ hr {
 #start {
 	width: 200px;
 	height: 100px;
-	margin-bottom: 20px;
 	background-color: steelBlue;
+}
+
+
+#select-category {
+	display: none;
+}
+
+button.btn.btn-primary {
 	border-radius: 40px 40px;
+	margin-bottom: 20px;
 }
 
 button.btn.btn-primary.bolded {
-	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 2em;
 }
+
+button.btn.btn-primary.bolded.category {
+	height: 100px;
+	background-color: darkCyan;
+}
+
+
 
 span.dc-name {
 	color: slateBlue;
 }
 
-div.select-category {
+div.row {
 	text-align: center;
 }
