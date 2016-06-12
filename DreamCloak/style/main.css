@@ -46,7 +46,7 @@ hr {
 
 .btn-group.bootstrap-select {
 	margin-top: 50px;
-	margin-bottom: 200px !important;
+	margin-bottom: 100px !important;
 }
 
 .filter-option.pull-left {
@@ -55,11 +55,7 @@ hr {
 	font-weight: bold;
 }
 
-#mode {
-}
-
 #mode-menu {
-	display: none;
 }
 
 button.btn.btn-primary {

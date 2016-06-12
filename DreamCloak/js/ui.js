@@ -1,5 +1,5 @@
 $(function(){
-	// Listeners
+	// Menu button logic
 	$('#start').on('click', function(event){
 		$('#select-category').slideDown();
 		setTimeout(function(){
@@ -8,18 +8,16 @@ $(function(){
 	});
 
 	$('#constant').on('click', function(event){
-		$('#select-mode').slideUp();
 		generateModeMenu("constant");
-		$('#select-mode').slideDown();
 	});
 
 	$('#animated').on('click', function(event){
-		$('#select-mode').slideUp();
 		generateModeMenu("animated");
-		$('#select-mode').slideDown();
 	});
 
-	// Generate initial menu
+	$("#mode").on('change', function(event){
+		generateModeOptions();
+	});
 });
 
 function generateModeMenu(mode){
@@ -27,28 +25,49 @@ function generateModeMenu(mode){
 	var modeMenu = $("#mode");
 
 	// Hide the menu
-	modeMenu.slideUp();
+	$("#select-mode").slideUp();
 
 	// Update the menu behind the scenes
 	setTimeout(function(){
 		// Empty the select list
 		modeMenu.empty().selectpicker('refresh');
+
+		// Retain what mode we are in
+		modeMenu.data("mode", mode);
 		
-		// Populate the new one
-		if (mode == "constant"){
-			$.each(MENU_OPTIONS.constant.menu, function(key, val){
-				modeMenu.append("<option>" + key + "<option>");
-			});
-		}else if (mode == "animated"){
-			$.each(MENU_OPTIONS.animated.menu, function(key, val){
-				modeMenu.append("<option>" + key + "<option>");
-			});
-		}
+		// Populate it with new data
+		$.each(MENU_OPTIONS[mode].menu, function(key, val){
+			modeMenu.append("<option>" + key + "</option>");
+		});
 
 		// Update menu
 		modeMenu.selectpicker('refresh');
 	}, 400);
 
 	// Show the menu
-	modeMenu.slideDown();
+	$("#select-mode").slideDown();
+}
+
+function generateModeOptions(){
+	// Find the dropdown
+	var modeMenu = $("#mode");
+	var modeOptions = $("#mode-menu-options");
+	selectedOption = modeMenu.val();
+
+	// Empty the options
+	modeOptions.empty();
+
+	// Populate the options
+	$.each(MENU_OPTIONS[modeMenu.data("mode")].menu[selectedOption].menu, function(i, item){
+		console.log(item);
+		if (item.type == "slider"){
+			addSlider(item, modeOptions);
+		}
+	});
+}
+
+// Add a slider to the given ID
+function addSlider(sliderInfo, element){
+	element.append(sliderInfo.label + ' <div id="' + sliderInfo.id+ '"></div>');
+	$("#"+sliderInfo.id).slider();
 }

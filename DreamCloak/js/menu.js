@@ -6,6 +6,7 @@ B = 0;
 COLORSIN_RATE = 0;
 COLORSIN_RIPPLE = 0;
 SELECTED_ANIMATION = "";
+SOUND_MODE = "";
 
 MENU_OPTIONS = {
 	constant : {
@@ -14,6 +15,7 @@ MENU_OPTIONS = {
 				menu : [
 					{
 						type : "slider",
+						label : "Red",
 						id : "constant-R",
 						range : [0, 255],
 						color : "crimson",
@@ -21,6 +23,7 @@ MENU_OPTIONS = {
 					},
 					{
 						type : "slider",
+						label : "Green",
 						id : "constant-G",
 						range : [0, 255],
 						color : "forestgreen",
@@ -28,6 +31,7 @@ MENU_OPTIONS = {
 					},
 					{
 						type : "slider",
+						label : "Blue",
 						id : "constant-B",
 						range : [0, 255],
 						color : "navy",
@@ -65,6 +69,18 @@ MENU_OPTIONS = {
 					}
 				],
 				callback : animationSelected
+			},
+			"Sound Reactive" : {
+				menu : {
+					type : "dropdown",
+					label : "Sound Mode",
+					id : "sound-mode",
+					values : [
+						"Sound Bar"
+					],
+					value : SOUND_MODE
+				},
+				callback : soundAnimation
 			}
 		}
 	}
@@ -80,4 +96,8 @@ function staticColor(){
 
 // Start animating with the given pattern
 function animationSelected(){
+}
+
+// Start animating with respect to sound
+function soundAnimation(){
 }
