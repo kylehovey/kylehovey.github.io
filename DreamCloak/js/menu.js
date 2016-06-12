@@ -92,6 +92,7 @@ function staticPattern(){
 
 // Set panel to given color
 function staticColor(){
+	console.log("called");
 }
 
 // Start animating with the given pattern

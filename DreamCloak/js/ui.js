@@ -7,12 +7,20 @@ $(function(){
 		}, 300);
 	});
 
+	$(".btn.btn-primary.bolded.category").on('click', function(event){
+		$("#mode-options-container").slideDown();
+	});
+
 	$('#constant').on('click', function(event){
-		generateModeMenu("constant");
+		if (!($("#mode").data("mode") == "constant")){
+			generateModeMenu("constant");
+		}
 	});
 
 	$('#animated').on('click', function(event){
-		generateModeMenu("animated");
+		if (!($("#mode").data("mode") == "animated")){
+			generateModeMenu("animated");
+		}
 	});
 
 	$("#mode").on('change', function(event){
@@ -42,6 +50,9 @@ function generateModeMenu(mode){
 
 		// Update menu
 		modeMenu.selectpicker('refresh');
+
+		// Update options
+		generateModeOptions();
 	}, 400);
 
 	// Show the menu
@@ -52,22 +63,26 @@ function generateModeOptions(){
 	// Find the dropdown
 	var modeMenu = $("#mode");
 	var modeOptions = $("#mode-menu-options");
-	selectedOption = modeMenu.val();
+	selectedOption = MENU_OPTIONS[modeMenu.data("mode")].menu[modeMenu.val()];
 
 	// Empty the options
 	modeOptions.empty();
 
 	// Populate the options
-	$.each(MENU_OPTIONS[modeMenu.data("mode")].menu[selectedOption].menu, function(i, item){
-		console.log(item);
+	$.each(selectedOption.menu, function(i, item){
 		if (item.type == "slider"){
-			addSlider(item, modeOptions);
+			addSlider(item, modeOptions, selectedOption.callback);
 		}
 	});
 }
 
 // Add a slider to the given ID
-function addSlider(sliderInfo, element){
-	element.append(sliderInfo.label + ' <div id="' + sliderInfo.id+ '"></div>');
-	$("#"+sliderInfo.id).slider();
+function addSlider(sliderInfo, element, callback){
+	element.append('<span class="slider-label">' + sliderInfo.label + '</span><div id="' + sliderInfo.id+ '"></div>');
+	$("#"+sliderInfo.id).slider({
+		orientation : "horizontal",
+		range : "min",
+		max : sliderInfo.range[1],
+		slide : callback
+	});
 }
