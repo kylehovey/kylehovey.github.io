@@ -1,13 +1,4 @@
 // Global constants to store menu data
-MODE = "Constant Color";
-R = 0;
-G = 0;
-B = 0;
-COLORSIN_RATE = 0;
-COLORSIN_RIPPLE = 0;
-SELECTED_ANIMATION = "";
-SOUND_MODE = "";
-
 MENU_OPTIONS = {
 	constant : {
 		menu : {
@@ -18,24 +9,21 @@ MENU_OPTIONS = {
 						label : "Red",
 						id : "constant-R",
 						range : [0, 255],
-						color : "crimson",
-						value : R
+						color : "crimson"
 					},
 					{
 						type : "slider",
 						label : "Green",
 						id : "constant-G",
 						range : [0, 255],
-						color : "forestgreen",
-						value : G
+						color : "forestgreen"
 					},
 					{
 						type : "slider",
 						label : "Blue",
 						id : "constant-B",
 						range : [0, 255],
-						color : "navy",
-						value : B
+						color : "navy"
 					}
 				],
 				callback: staticColor
@@ -56,16 +44,14 @@ MENU_OPTIONS = {
 						label : "Rate",
 						id : "colorsin-rate",
 						range : [1, 10],
-						color : "slateBlue",
-						value : COLORSIN_RATE
+						color : "slateBlue"
 					},
 					{
 						type : "slider",
 						label : "Ripple Factor",
 						id : "colorsin-ripples",
 						range : [1, 10],
-						color : "slateBlue",
-						value : COLORSIN_RIPPLE
+						color : "slateBlue"
 					}
 				],
 				callback : animationSelected
@@ -77,8 +63,7 @@ MENU_OPTIONS = {
 					id : "sound-mode",
 					values : [
 						"Sound Bar"
-					],
-					value : SOUND_MODE
+					]
 				},
 				callback : soundAnimation
 			}
