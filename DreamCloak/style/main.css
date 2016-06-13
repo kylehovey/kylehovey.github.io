@@ -71,12 +71,13 @@ hr {
 
 .filter-option.pull-left {
 	text-align: center !important;
-	font-size: 2em;
 	font-weight: bold;
 }
 
 .menu-text {
 	margin-bottom: 40px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #0AE;
 }
 
 .ui-slider {
@@ -90,18 +91,18 @@ hr {
 }
 
 button.btn.btn-primary {
-	border-radius: 40px 40px;
+	border-radius: 0px 0px;
 	margin-bottom: 20px;
 }
 
 button.btn.btn-primary.bolded {
 	font-weight: bold;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 button.btn.btn-primary.bolded.category {
 	height: 100px;
-	width: 200px;
+	width: 100%;
 	background-color: darkCyan;
 }
 
