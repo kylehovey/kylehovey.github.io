@@ -9,6 +9,7 @@ MENU_OPTIONS = {
 						label : "Red",
 						id : "constant-R",
 						range : [0, 255],
+						initial : 50,
 						color : "crimson"
 					},
 					{
@@ -16,6 +17,7 @@ MENU_OPTIONS = {
 						label : "Green",
 						id : "constant-G",
 						range : [0, 255],
+						initial : 50,
 						color : "forestgreen"
 					},
 					{
@@ -23,6 +25,7 @@ MENU_OPTIONS = {
 						label : "Blue",
 						id : "constant-B",
 						range : [0, 255],
+						initial : 50,
 						color : "navy"
 					}
 				],
@@ -30,6 +33,15 @@ MENU_OPTIONS = {
 			},
 			"Static Pattern" : {
 				menu : [
+					{
+						type : "dropdown",
+						label : "Pattern",
+						id : "sound-mode",
+						values : [
+							"Hyperbolas",
+							"Rainbow"
+						]
+					}
 				],
 				callback: staticPattern
 			}
@@ -44,6 +56,7 @@ MENU_OPTIONS = {
 						label : "Rate",
 						id : "colorsin-rate",
 						range : [1, 10],
+						initial : 5,
 						color : "slateBlue"
 					},
 					{
@@ -51,20 +64,24 @@ MENU_OPTIONS = {
 						label : "Ripple Factor",
 						id : "colorsin-ripples",
 						range : [1, 10],
+						initial : 5,
 						color : "slateBlue"
 					}
 				],
 				callback : animationSelected
 			},
 			"Sound Reactive" : {
-				menu : {
-					type : "dropdown",
-					label : "Sound Mode",
-					id : "sound-mode",
-					values : [
-						"Sound Bar"
-					]
-				},
+				menu : [
+					{
+						type : "dropdown",
+						label : "Sound Mode",
+						id : "sound-mode",
+						values : [
+							"Sound Bar",
+							"Sound Waves"
+						]
+					}
+				],
 				callback : soundAnimation
 			}
 		}
@@ -77,7 +94,6 @@ function staticPattern(){
 
 // Set panel to given color
 function staticColor(){
-	console.log("called");
 }
 
 // Start animating with the given pattern

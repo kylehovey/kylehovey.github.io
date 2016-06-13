@@ -9,6 +9,7 @@ $(function(){
 
 	$(".btn.btn-primary.bolded.category").on('click', function(event){
 		$("#mode-options-container").slideDown();
+		$("#apply-row").slideDown();
 	});
 
 	$('#constant').on('click', function(event){
@@ -72,17 +73,52 @@ function generateModeOptions(){
 	$.each(selectedOption.menu, function(i, item){
 		if (item.type == "slider"){
 			addSlider(item, modeOptions, selectedOption.callback);
+		} else if (item.type == "dropdown"){
+			addDropdown(item, modeOptions, selectedOption.callback);
 		}
 	});
 }
 
 // Add a slider to the given ID
 function addSlider(sliderInfo, element, callback){
-	element.append('<span class="slider-label">' + sliderInfo.label + '</span><div id="' + sliderInfo.id+ '"></div>');
-	$("#"+sliderInfo.id).slider({
+	// Append the div element
+	element.append('<span class="ui-label">' + sliderInfo.label + ': </span>'
+			+ '<span class="slider-data" id="' + sliderInfo.id + '-data">' + sliderInfo.initial + '</span>'
+			+ '<div id="' + sliderInfo.id+ '"></div>');
+	
+	// Create a temp var for the slider element
+	var mySlider = $("#" + sliderInfo.id);
+
+	// Init the slider
+	mySlider.slider({
 		orientation : "horizontal",
 		range : "min",
 		max : sliderInfo.range[1],
-		slide : callback
+		slide : function(event){
+			callback();
+			$("#" + sliderInfo.id + "-data").text($("#" + sliderInfo.id).slider('value'));
+		},
+		value : sliderInfo.initial ? sliderInfo.initial : 0
 	});
+
+	// Change the color
+	mySlider.children(".ui-slider-range").css("background", sliderInfo.color);
+}
+
+// Add a dropdown to the given ID
+function addDropdown(dropdownInfo, element, callback){
+	// Append the select menu
+	element.append('<span class="ui-label">' + dropdownInfo.label + ':</span><br />'
+		+ '<select class="selectpicker mode-select" id="' + dropdownInfo.id + '" data-style="btn-info" data-width="70%">');
+
+	// Create a temp var for the dropdown element
+	myDropdown = $("#" + dropdownInfo.id);
+
+	// Populate the dropdown
+	$.each(dropdownInfo.values, function(i, item){
+		myDropdown.append('<option>' + item + '</option>');
+	});
+
+	// Update the dropdown
+	myDropdown.selectpicker('refresh');
 }
