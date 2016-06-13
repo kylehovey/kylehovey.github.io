@@ -35,6 +35,8 @@ function generateModeMenu(mode){
 
 	// Hide the menu
 	$("#select-mode").slideUp();
+	$("#mode-menu").slideUp();
+	$("#apply-row").slideUp();
 
 	// Update the menu behind the scenes
 	setTimeout(function(){
@@ -58,6 +60,8 @@ function generateModeMenu(mode){
 
 	// Show the menu
 	$("#select-mode").slideDown();
+	$("#mode-menu").slideDown();
+	$("#apply-row").slideDown();
 }
 
 function generateModeOptions(){
