@@ -4,14 +4,24 @@
 
 @font-face {
 		font-family: digitalSeven;
-		src: url("../fonts/digital-7.woff");
+		src: url("fonts/digital-7.woff");
+}
+
+body {
+		background-color: slategrey;
+		height: 100px;
+		background: url("../images/wood.jpg");
+		background-size: 100%;
+}
+
+#header {
 }
 
 #baseboard {
 }
 
 #number-entry-row {
-	background-color: darkslategrey;
+		margin-top: 10%;
 }
 
 #number-entry-cell {
@@ -21,14 +31,36 @@
 }
 
 #number-entry {
-	color: white;
-	background-color: slategrey;
+	color: transparent;
+	text-shadow: 0px 0px 3px crimson;
+	background-color: black;
 	text-transform: uppercase;
 	font-family: "digitalSeven";
-	font-size: 8em;
+	font-size: 5em;
+	letter-spacing: 10vw;
+	overflow: hidden;
+	text-align: right;
 	width: 100%;
 }
 
-input.placeholder {
-		text-align: center;
+#submit {
+	font-size: 2em;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+::-webkit-input-placeholder {
+	color: transparent;
+}
+
+:-moz-placeholder {
+	color: transparent;
+}
+
+::-moz-placeholder {
+	color: transparent;
+}
+
+:-ms-input-placeholder {
+	color: transparent;
 }
