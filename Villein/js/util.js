@@ -22,7 +22,7 @@ function numUtils(){
 								digit = (num - num % placeValue)/placeValue;
 
 								// Shift it into out
-								out += (10**i)*digit;
+								out += (Math.pow(10, i))*digit;
 
 								// Remove what we just represented
 								num %= placeValue;
