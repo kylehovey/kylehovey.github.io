@@ -23,21 +23,12 @@ function Villein(id, n){
 				// Clear the canvas
 				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-				// Clear the grid
-				this.grid = [[], [], [], [], []];
-
 				// Determine the spaces inbetween dots
 				var step = this.canvas.height/4;
 
 				// Draw the circles and record their locations
 				for (var x = 0; x < 5; x++){
 						for (var y = 0; y < 5; y++){
-								// Memorize the location
-								this.grid[x].push({
-										x : x*step,
-										y : y*step
-								});
-
 								// Draw the circle
 								this.context.beginPath();
 								this.context.arc(x*step, y*step, 15, 0, Math.PI*2);
