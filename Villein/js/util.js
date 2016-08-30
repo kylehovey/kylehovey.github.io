@@ -1,4 +1,6 @@
 // Number utilities
+//
+// Author: Kyle Hovey
 
 function numUtils(){
 		this.toFour = function(num){

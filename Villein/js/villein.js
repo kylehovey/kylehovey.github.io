@@ -2,6 +2,8 @@
 //
 // Villein arithmetic is in base 4, and each grid
 // 5 base-4 digits (representing 0-1023 in decimal)
+//
+// Author: Kyle Hovey
 
 function Villein(id, n){
 		// Create the canvas
