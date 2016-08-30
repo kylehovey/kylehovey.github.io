@@ -20,5 +20,8 @@ $(function(){
 		$("#clear").on("click", function(event){
 				// Clear the input
 				$("#number-entry").val("");
+
+				// Clear the digit
+				mainDigit.setDigit(0);
 		});
 });
