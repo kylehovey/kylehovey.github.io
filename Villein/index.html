@@ -3,7 +3,10 @@
 	<head>
 		<title>Villein Number Translator</title>
 
-		<!-- CSS INCLUDES -->
+		<!-- Stay Mobile Friendly -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- ===== CSS INCLUDES ===== -->
 		<!-- JQuery -->
 		<link rel="stylesheet" type="text/css" href="style/main.css" />
 
@@ -11,9 +14,24 @@
 		<link rel="stylesheet" type="text/css" href="style/external/sweetalert.css" />
 
 		<!-- Bootstrap -->
-		<link rel="stylesheet" type="text/css" href="style/external/boostrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="style/external/bootstrap.min.css" />
+		<!-- ===== /CSS INCLUDES ===== -->
 	</head>
 	<body>
+		<!-- MAIN CONTAINER-->
+		<div class="container-fluid" id="baseboard">
+				<div class="row" id="number-entry-row">
+						<div id="number-entry-cell">
+								<input type="text" id="number-entry" placeholder="0000" maxlength="4" size="4"></input>
+						</div>
+				</div>
+				<div class="row">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">Button</div>
+						<div class="col-md-4"></div>
+				</div>
+		</div>
+
 		<!-- ===== SCRIPT INCLUDES ===== -->
 		<!-- JQuery -->
 		<script type="text/javascript" src="js/external/jquery.min.js"></script>
@@ -23,5 +41,6 @@
 
 		<!-- Bootstrap -->
 		<script type="text/javascript" src="js/external/bootstrap.min.js"></script>
+		<!-- ===== /SCRIPT INCLUDES ===== -->
 	</body>
 </html>
