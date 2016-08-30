@@ -24,4 +24,11 @@ $(function(){
 				// Clear the digit
 				mainDigit.setDigit(0);
 		});
+
+		// Disallow entry higher than possible for one grid
+		$("#number-entry").on("keydown keyup", function(event){
+				if (+$(this).val() > 1023 || isNaN(+$(this).val())){
+						$(this).val("1023");
+				}
+		});
 });
