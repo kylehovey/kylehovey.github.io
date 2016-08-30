@@ -14,7 +14,7 @@ function numUtils(){
 				// For a Villein digit, num < 4^5 = 1024
 				for (var i = 4; i >= 0; i--){
 						// Find value at place i
-						placeValue = 4**i;
+						placeValue = Math.pow(4, i);
 
 						// If number contains value at digit i
 						if (num - placeValue >= 0){
