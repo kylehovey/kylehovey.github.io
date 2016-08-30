@@ -34,8 +34,8 @@ function numUtils(){
 		// Basic number structures
 		this.structures = [
 				[[-1, 0]],
-				[[0, 1], [1, 0]],
-				[[0, 1], [0, 1], [1, 0]]
+				[[0, -1], [1, 0]],
+				[[0, -1], [0, 1], [-1, 0]]
 		];
 
 		// Digit locations
