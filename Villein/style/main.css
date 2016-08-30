@@ -1,0 +1,34 @@
+/* Stylesheet for Villein Number Translator
+ * Author: Kyle Hovey
+ */
+
+@font-face {
+		font-family: digitalSeven;
+		src: url("../fonts/digital-7.woff");
+}
+
+#baseboard {
+}
+
+#number-entry-row {
+	background-color: darkslategrey;
+}
+
+#number-entry-cell {
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+}
+
+#number-entry {
+	color: white;
+	background-color: slategrey;
+	text-transform: uppercase;
+	font-family: "digitalSeven";
+	font-size: 8em;
+	width: 100%;
+}
+
+input.placeholder {
+		text-align: center;
+}
