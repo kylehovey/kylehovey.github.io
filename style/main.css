@@ -1,0 +1,13 @@
+/* Stylesheet for main GitHub page
+ * Author: Kyle Hovey
+ */
+
+body {
+		background-color: slategrey;
+		height: 100px;
+		background: url("../images/wood.jpg");
+		background-size: 100%;
+}
+
+#baseboard {
+}
