@@ -9,5 +9,36 @@ body {
 		background-size: 100%;
 }
 
+.col-xs-6.half {
+	height: 100%;
+}
+
+.row.table {
+	display: table;
+}
+
 #baseboard {
+}
+
+#calsim-area {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 3em;
+	padding-top: 25%;
+	background-color: darkcyan;
+	height: 100%;
+}
+
+#villein-area {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 3em;
+	padding-top: 25%;
+	background-color: lightblue;
+}
+
+a {
+	color: white !important;
 }
