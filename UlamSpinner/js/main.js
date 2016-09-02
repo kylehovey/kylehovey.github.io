@@ -14,8 +14,11 @@ $(function() {
 	$(window).resize(function(event) {
 		// Resize canvas
 		board.resize();
+
+		// Initialize grid
+		ulam.initGrid();
 	});
 
-	// TESTING
-	//mySpinner = new Spinner(board.canvas, {x : board.width/2, y: board.height/2}, 50);
+	// Start animation
+	ulam.start();
 });
