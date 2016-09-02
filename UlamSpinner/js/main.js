@@ -1,25 +1,21 @@
 // Javascript onload
 
 $(function() {
-	// Get canvas
-	var canvas = $("#drawing-board")[0];
-	d = 1
-
-	// Create context
-	var context = canvas.getContext("2d");
-
-	// Initialize drawing tools [GLOBAL]
-	draw = new drawSpinners(context);
+	// Initialize drawing tools
+	board = new DrawUtils("#drawing-board");
 
 	// Resize to full screen
-	draw.resize();
+	board.resize();
+
+	// Draw some spinners
+	ulam = new Ulam(board.canvas, 50);
 
 	// Add listeners
 	$(window).resize(function(event) {
 		// Resize canvas
-		draw.resize();
+		board.resize();
 	});
 
-	// Start animation
-	draw.start();
+	// TESTING
+	//mySpinner = new Spinner(board.canvas, {x : board.width/2, y: board.height/2}, 50);
 });
