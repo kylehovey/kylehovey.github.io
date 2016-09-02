@@ -10,6 +10,7 @@ body {
 }
 
 .col-xs-6.half {
+	min-height: 100%;
 	height: 100%;
 }
 
