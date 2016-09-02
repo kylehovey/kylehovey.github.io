@@ -38,6 +38,9 @@ function Spinner(canvas, center, radius, w = 1, t = 0) {
 		this.t = t
 		this.theta = this.w*this.t;
 
+		// Update color
+		this.colors.circleColor = board.colorWheel(this.theta);
+
 		// Draw the spinner
 		board.drawLine(center, {
 			x : center.x + radius*Math.cos(this.theta),

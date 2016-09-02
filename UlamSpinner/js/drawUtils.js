@@ -32,7 +32,7 @@ function DrawUtils(id) {
 	};
 
 	// Draw a line
-	this.drawLine = function(start, end, color = "#000", width = 10) {
+	this.drawLine = function(start, end, color = "#000", width = 8) {
 		// Begin path
 		this.ctx.beginPath();
 
@@ -75,5 +75,18 @@ function DrawUtils(id) {
 
 		// Close path
 		this.ctx.closePath();
+	};
+	
+	// Return a color along a wheel
+	this.colorWheel = function(t) {
+		// Circular walk through RGB space
+		var color = [
+			Math.round(255*(Math.sin(t) + 1)/2),
+			Math.round(255*(Math.sin(t + 2*Math.PI/3) + 1)/2),
+			Math.round(255*(Math.sin(t + 4*Math.PI/3) + 1)/2)
+		]
+
+		// Return the color
+		return "rgb(" + color.join(",") + ")"; 
 	};
 };
