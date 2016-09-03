@@ -76,17 +76,32 @@ function DrawUtils(id) {
 		// Close path
 		this.ctx.closePath();
 	};
+
+	// Convert a 3-element array of color values into rgb()
+	this.toRGB = function(color) {
+		return "rgb(" + color.join(",") + ")";
+	};
 	
 	// Return a color along a wheel
 	this.colorWheel = function(t) {
 		// Circular walk through RGB space
-		var color = [
+		return this.toRGB([
 			Math.round(255*(Math.sin(t) + 1)/2),
 			Math.round(255*(Math.sin(t + 2*Math.PI/3) + 1)/2),
 			Math.round(255*(Math.sin(t + 4*Math.PI/3) + 1)/2)
-		]
+		]);
+	};
 
-		// Return the color
-		return "rgb(" + color.join(",") + ")"; 
+	// Linear interpolate two colors
+	this.lerpColors = function(a, b, t) {
+		// Determine lerp variables
+		var s = 1-t;
+
+		// Return a color inbetween a and b
+		return this.toRGB([
+			Math.round(s*a.R + t*b.R),
+			Math.round(s*a.G + t*b.G),
+			Math.round(s*a.B + t*b.B)
+		]);
 	};
 };
