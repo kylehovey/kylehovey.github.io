@@ -8,7 +8,7 @@ $(function() {
 	board.resize();
 
 	// Draw some spinners
-	ulam = new Ulam(board.canvas, 50);
+	ulam = new Ulam(board.canvas, 30);
 
 	// Add listeners
 	$(window).resize(function(event) {
