@@ -36,7 +36,11 @@ function DrawUtils(id) {
 	};
 
 	// Draw a line
-	this.drawLine = function(start, end, color = "#000", width = 8) {
+	this.drawLine = function(start, end, color, width) {
+		// Default parameters
+		color = (color === undefined) ? "#000" : color;
+		width = (width === undefined) ? 8 : width;
+
 		// Begin path
 		this.ctx.beginPath();
 
@@ -52,7 +56,10 @@ function DrawUtils(id) {
 	};
 
 	// Draw a circle
-	this.drawCircle = function(center, radius, color = "#000") {
+	this.drawCircle = function(center, radius, color) {
+		// Default parameters
+		color = (color === undefined) ? "#000" : color;
+
 		// Begin path
 		this.ctx.beginPath();
 
@@ -68,7 +75,10 @@ function DrawUtils(id) {
 	};
 
 	// Draw a box
-	this.drawBox = function(start, end, color = "#000") {
+	this.drawBox = function(start, end, color) {
+		// Default parameters
+		color = (color === undefined) ? "#000" : color;
+
 		// Begin path
 		this.ctx.beginPath();
 
