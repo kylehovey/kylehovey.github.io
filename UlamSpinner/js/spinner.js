@@ -2,7 +2,11 @@
 //
 // Author: Kyle Hovey
 
-function Spinner(canvas, center, radius, w = 1, t = 0) {
+function Spinner(canvas, center, radius, w, t) {
+	// Default parameters
+	t = (t === undefined) ? 0 : t;
+	w = (w === undefined) ? 1 : w;
+
 	// Default colors
 	this.colors = {
 		circleColor : "rgb(10, 100, 110)",
