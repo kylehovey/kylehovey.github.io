@@ -21,13 +21,17 @@ function DrawUtils(id) {
 	};
 
 	// Clear the canvas
-	this.clear = function(start = {
-		x : 0,
-		y : 0
-	}, dim = {
-		width : this.width,
-		height : this.height
-	}) {
+	this.clear = function(start, dim) {
+		// Default parameters
+		start = (start === undefined) ? {
+			x : 0,
+			y : 0
+		} : start;
+		dim = (dim === undefined) ? {
+			width : this.width,
+			height : this.height
+		} : dim;
+		// Clear rect
 		this.ctx.clearRect(start.x, start.y, dim.width, dim.height);
 	};
 

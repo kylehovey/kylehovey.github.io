@@ -2,7 +2,10 @@
 //
 // Author: Kyle Hovey
 
-function Ulam(canvas, spinnerWidth = 100) {
+function Ulam(canvas, spinnerWidth) {
+	// Default parameters
+	spinnerWidth = (spinnerWidth === undefined) ? 100 : spinnerWidth;
+
 	// Get context
 	this.ctx = canvas.getContext("2d");
 
