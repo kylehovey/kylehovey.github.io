@@ -25,7 +25,10 @@ function Spinner(canvas, center, radius, w, t) {
 	this.theta = this.w*this.t;
 
 	// Call to update spinner with new values
-	this.update = function(t = this.t) {
+	this.update = function(t) {
+		// Default parameters
+		t = (t === undefined) ? this.t : t;
+
 		// Clear the spinner
 		board.clear({
 			x : this.center.x - this.radius,

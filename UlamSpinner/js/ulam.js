@@ -111,7 +111,10 @@ function Ulam(canvas, spinnerWidth) {
 	};
 
 	// Start time parameter
-	this.start = function(reset = false) {
+	this.start = function(reset) {
+		// Default parameters
+		reset = (reset === undefined) ? false : reset;
+
 		// Begin counting
 		this.counter = setInterval(function() {
 			// Clear
@@ -126,7 +129,10 @@ function Ulam(canvas, spinnerWidth) {
 	}.bind(this);
 
 	// Stop time parameter
-	this.stop = function(reset = false) {
+	this.stop = function(reset) {
+		// Default parameters
+		reset = (reset === undefined) ? false : reset;
+
 		// Reset t if needed
 		this.t = reset ? 0 : this.t;
 
