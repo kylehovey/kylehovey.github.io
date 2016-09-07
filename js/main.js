@@ -3,7 +3,6 @@
 $(function() {
 	// Create wheelnav
 	wheel = new wheelnav("main-nav");
-	//wheel.colors = colorpalette.fractallove;
 	wheel.colors = ['#497F4C'];
 	wheel.clickModeRotate = false;
 	wheel.slicePathFunction = slicePath().DonutSlice;
