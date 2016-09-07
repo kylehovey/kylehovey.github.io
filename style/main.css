@@ -3,43 +3,40 @@
  */
 
 body {
-		background-color: slategrey;
-		height: 100px;
-		background: url("../images/wood.jpg");
-		background-size: 100%;
+	background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+	background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+	background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+	background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+	-webkit-background-size: 3px 3px;
+	-moz-background-size: 3px 3px;
+	background-size: 3px 3px;
 }
 
-.col-xs-6.half {
-	min-height: 100%;
+#wheelnav-row {
+	margin-top: 18%;
+}
+
+#main-nav {
+	height: 400px;
+	width: 400px;
+	margin: auto;
+}
+
+#main-nav>svg {
 	height: 100%;
+	width: 100%;
 }
 
-.row.table {
-	display: table;
+@media (max-width: 600px) {
+	#main-nav {
+		height: 350px;
+		width: 350px;
+	}
 }
 
-#baseboard {
-}
-
-#calsim-area {
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 3em;
-	padding-top: 25%;
-	background-color: darkcyan;
-	height: 100%;
-}
-
-#villein-area {
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 3em;
-	padding-top: 25%;
-	background-color: lightblue;
-}
-
-a {
-	color: white !important;
+@media (max-width: 400px) {
+	#main-nav {
+		height: 300px;
+		width: 300px;
+	}
 }
