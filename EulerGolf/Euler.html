@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Euler Golf!</title>
+	<link rel="stylesheet" type="text/css" href="sweetalert/dist/sweetalert.css">
+	<link rel=icon href=images/favicon.ico sizes="32x32" type="image/png">
+	<script src="sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body style="margin:0px; overflow:hidden">
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+	//Create the canvas and context, then scale it to the window and record aspect
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.canvas.width = window.innerWidth;
+	ctx.canvas.height = window.innerHeight;
+	var aspect_ratio = canvas.height/canvas.width;
+
+	//Colors
+	//var color_start = {r:255, g:102, b:0};
+	var color_start = {r:0, g:170, b:145};
+	var color_end = {r:0, g:204, b:50};
+
+	//Bools for action logging
+	var rightPressed = false;
+	var leftPressed = false;
+
+	//Determine spacing and dimensions for gameboard grid
+	var gridColCount = 21;
+	var gridRowCount = Math.round(gridColCount*aspect_ratio)-1;
+	var x_center = Math.round(gridColCount/2); 
+	var y_center = Math.ceil(gridRowCount/2)+1;
+	var gridRadius = 5;
+	var gridPadding = canvas.width/(gridColCount+1);
+	var gridOffset = gridPadding;
+
+	//Verify that origin is in odd location
+	if ((x_center + y_center) % 2 == 0){
+		y_center -= 1;
+	}
+
+	//Slider value initializer
+	var sliderValue = 0;
+
+	//Undo initializes the slider value from within the scope of gameLogic()
+	var undoPressed = true;
+
+	//Start the game without having won
+	var win = false;
+
+	//Reset variable
+	var reset = false;
+
+	//Initialize target
+	var initialize = true;
+
+	//Initialize the grid
+	var grid = [];
+	for(c=0; c<gridColCount; c++) {
+	    grid[c] = [];
+	    for(r=0; r<gridRowCount; r++) {
+	        grid[c][r] = { x: 0, y: 0 };
+	    }
+	}
+
+	//Used for target selection
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function selectTarget(){
+		var out = {x:getRandomInt(0, gridColCount-1), y:getRandomInt(0, gridRowCount-1)};
+		//Make sure point is an odd Gaussian Integer
+		if ( (out.y % 2 == 1 || out.x % 2 == 1) ){
+			out = selectTarget();
+		}
+		return out;
+	}
+
+	//Linear interpolation for color mixing
+	function lerp(color_from, color_to, t){
+		var color_out = {r:0, g:0, b:0};
+
+		color_out.r = Math.round((1.0-t)*color_from.r + t*color_to.r);
+		color_out.g = Math.round((1.0-t)*color_from.g + t*color_to.g);
+		color_out.b = Math.round((1.0-t)*color_from.b + t*color_to.b);
+
+		return color_out;
+	}
+
+	//Random indices for target
+	var selection = selectTarget();
+
+	//Initialize positions, now that the grid exists
+	var origin = {x:x_center, y:y_center};
+	var a = grid[origin.x-1][origin.y-1];		//-1 on indices due to zero based indexing
+	var b = grid[origin.x][origin.y-1];
+	var positions = [a, b];
+	var moves = [];
+
+	//Index for game move
+	var index = 0;
+
+	//Listeners for key events
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+	document.addEventListener("mousedown", mouseDownHandler, false);
+	document.addEventListener("mouseup", mouseUpHandler, false);
+	document.addEventListener("touchstart", mouseUpHandler, false);
+	document.addEventListener("touchend", mouseDownHandler, false);
+
+	//Handlers for key events
+	function keyDownHandler(e) {
+	 	if(e.keyCode == 39) {
+	 		rightPressed = true;
+	 	}
+	 	else if(e.keyCode == 37) {
+	 		leftPressed = true;
+	 	}else if(e.keyCode == 85){
+			undoPressed = true;
+		}
+	}
+
+	function keyUpHandler(e) {
+	 	if(e.keyCode == 39) {
+	 		rightPressed = false;
+	 	}
+	 	else if(e.keyCode == 37) {
+	 		leftPressed = false;
+		}else if(e.keyCode == 85){
+			undoPressed = false;
+		}
+	}
+
+	//Mouse support mainly for touchscreen support
+	function mouseDownHandler(e){
+		var x = e.pageX - canvas.offsetLeft;
+		var y = e.pageY - canvas.offsetTop;
+		if (x > canvas.width/2+100){
+			rightPressed = true;
+		}else if (x < canvas.width/2-100){
+			leftPressed = true;
+		}else if (x > canvas.width/2-100 || x < canvas.width/2+100 ){
+			if (positions.length > 2){
+				moves.pop();
+				positions.pop();
+				index -= 1;
+				sliderValue = 0;
+				undoPressed = false;
+			}else{
+				sliderValue = 0;
+				undoPressed = false;
+			}
+		}
+	}
+
+	function mouseUpHandler(e){
+		var x = e.pageX - canvas.offsetLeft;
+		var y = e.pageY - canvas.offsetTop;
+		if (x > canvas.width/2+100){
+			rightPressed = false;
+		}else if (x < canvas.width/2-100){
+			leftPressed = false;
+		}
+	}
+
+	//Cooldown timer for game controls (otherwise overshoots when reset)
+	function wait(milliseconds) {
+		var start = new Date().getTime();
+		for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds){
+				break;
+			}
+		}
+	}
+
+	//Use arg, mag to find angle of given vector from x-axis and magnitude, respectively
+	function arg(a){
+		return Math.atan(a.y/a.x);
+	}
+
+	function mag(a){
+		return Math.sqrt(a.x*a.x + a.y*a.y);
+	}
+
+	//Simulates multiplication by either i or -i
+	function pos_move(a){
+		return {x:-a.y, y:a.x};
+	}
+
+	function neg_move(a){
+		return {x:a.y, y:-a.x};
+	}
+
+	function getRandomArbitrary(min, max) {
+	    return Math.random() * (max - min) + min;
+	}
+
+	//Method to select random point within grid
+	function select_target(x,y){
+		var u = getRandomArbitrary(0,x);
+		var v = getRandomArbitrary(0,y);
+		if (u+v % 2 == 0){
+			u = u+1;
+		}
+		var out = {x:u, x:v};
+	}
+
+	//Given the last point as the center of rotation and the current point, find the
+	//next point based on the direction of rotation (1 for positive 90, -1 for -90)
+	function move(current, last, direction){
+		var next = {x:0, y:0};
+
+		next.x = current.x - last.x;
+		next.y = current.y - last.y;
+
+		if (direction > 0){
+			next = neg_move(next);	//These are backwards because of inverted y
+		}else{
+			next = pos_move(next);
+		}
+
+		next.x += last.x;
+		next.y += last.y;
+
+		return next;
+	}
+
+	//drawGrid used twice, once for dots, secondly for their round backdrops
+	function drawGrid(radius, color) {
+	    for(c=0; c<gridColCount; c++) {
+	        for(r=0; r<gridRowCount; r++) {
+			if (c == (x_center-1) && r == (y_center-1)){
+	            		var gridX = (c*gridPadding)+gridOffset;
+	            		var gridY = (r*gridPadding)+gridOffset/2;
+	            		grid[c][r].x = gridX;
+	            		grid[c][r].y = gridY;
+			}else{
+	            		var gridX = (c*gridPadding)+gridOffset;
+	            		var gridY = (r*gridPadding)+gridOffset/2;
+	            		grid[c][r].x = gridX;
+	            		grid[c][r].y = gridY;
+				drawCircle(gridX, gridY, radius, color);
+			}
+	        }
+	    }
+	}
+
+	//Used primarily in drawGrid, but also for the white circle behind origin
+	function drawCircle(x, y, radius, color){
+	         ctx.beginPath();
+	         ctx.arc(x, y, radius, 0, Math.PI*2);
+	         ctx.fillStyle = color;
+	         ctx.fill();
+	         ctx.closePath();
+	}
+
+	//Draw lines
+	function drawLine(a, b, width, color, cap){
+		ctx.beginPath();
+		ctx.moveTo(a.x, a.y);
+		ctx.lineTo(b.x, b.y);
+		ctx.lineWidth = width;
+		ctx.strokeStyle = color;
+		ctx.lineCap = cap;
+		ctx.stroke();
+		ctx.closePath();
+	}
+
+	//Draws the slider track graphic
+	function drawSlider(sliderValue, slider_color){
+		var length = 500;
+		var pad = 0;
+		var width = 8;
+		var color = "rgba(0, 75, 84, 100)";
+		a = {x:(canvas.width-length)/2, y:gridRowCount*(canvas.width/gridColCount)-pad};
+		b = {x:(canvas.width+length)/2, y:gridRowCount*(canvas.width/gridColCount)-pad};
+		middle_top = {x:canvas.width/2, y:gridRowCount*(canvas.width/gridColCount)-pad-width*2};
+		middle_bottom = {x:canvas.width/2, y:gridRowCount*(canvas.width/gridColCount)-pad+width*2};
+
+		drawLine(a, b, width, color, "round");
+		drawCircle(a.x, a.y, width*2, color);
+		drawCross(a, 15, 5, "#fff");
+		drawCircle(b.x, b.y, width*2, color);
+		drawMinus(b, 15, 5, "#fff");
+		drawLine(middle_top, middle_bottom, width, color, "butt");
+		drawCircle((canvas.width+sliderValue*length)/2, a.y, width*2.1, slider_color);
+	}
+
+	//Buggy, need to figure out why start and stop angles are erroneous
+	function drawArc(a, b, c){
+		var A = {x:a.x-c.x, y:a.y-c.y};
+		var B = {x:b.x-c.x, y:b.y-c.y};
+		var radius = mag(A);
+		var angle_A = arg(A);
+		var angle_B = arg(B);
+		var d_theta = Math.abs(angle_A-angle_B);
+
+		if (angle_A < 0){	//If angles are negative, change to positive value
+			angle_A += 2*Math.PI;
+		}
+		if (angle_B < 0){
+			angle_B += 2*Math.PI;
+		}
+
+		if (angle_B > angle_A){
+			var clockwise = true;
+		}else{
+			var clockwise = false;
+		}
+
+		ctx.beginPath();
+		ctx.arc(c.x, c.y, radius, angle_A, angle_B, clockwise);
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = "rgba(0, 0, 0, 100)";
+		ctx.stroke();
+		ctx.closePath();
+	}
+
+	//Used for drawing the cross at the origin
+	function drawCross(a, length, width, color){
+		var c_bottom = {x:a.x-length/2, y:a.y};
+		var c_top = {x:a.x+length/2, y:a.y};
+		var c_left = {x:a.x, y:a.y-length/2};
+		var c_right = {x:a.x, y:a.y+length/2};
+
+		drawLine(c_bottom, c_top, width, color, "butt");
+		drawLine(c_left, c_right, width, color, "butt");
+	}
+
+	//Used for minus sign
+	function drawMinus(a, length, width, color){
+		var c_bottom = {x:a.x-length/2, y:a.y};
+		var c_top = {x:a.x+length/2, y:a.y};
+
+		drawLine(c_bottom, c_top, width, color, "butt");
+	}
+
+	//When input is detected, this is invoked to see what happens next
+	function gameLogic(win_status){
+		if (!win_status){
+			if ( rightPressed ){
+				sliderValue += 0.02;
+			}
+			if ( leftPressed ){
+				sliderValue -= 0.02;
+			}
+			if ( undoPressed ){
+				if (positions.length > 2){
+					moves.pop();
+					positions.pop();
+					index -= 1;
+					sliderValue = 0;
+					undoPressed = false;
+				}else{
+					sliderValue = 0;
+					undoPressed = false;
+				}
+			}
+			if ( sliderValue >= 1.02 ){
+				moves[index] = 1;
+				positions[index+2]=move(positions[index+1], positions[index], -1);
+				index += 1;
+				sliderValue = 0;
+			}
+			if ( sliderValue <= -1.02 ){
+				moves[index] = -1;
+				positions[index+2]=move(positions[index+1], positions[index], 1);
+				index += 1;
+				sliderValue = 0;
+			}
+		}else{
+			swal({title:"Good Job!",text:"Grid completed. Play again?",type:"success"},function(isConfirm){if(isConfirm){reset = true;}});
+		}
+	}
+
+	swal("Game Controls:", "Left and Right Arrow Keys: Move pointer; 'u' Key: Undo");
+
+	//All actual drawing happens in this function
+	function draw(){
+		//Initialize variables (a second time, since some browsers like them here)
+		if ( initialize){
+			selection = selectTarget();
+			target = grid[selection.x][selection.y];
+			initialize = false;
+		}
+
+		//Clear the canvas
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		//Draw all of the move displacements
+		for (n=0; n<positions.length-1; n++){
+		        drawLine(positions[n+1], positions[n], 5, "#000", "round");
+		}
+
+		//Notable spots
+		var last = positions[index];
+		var current = positions[index+1];
+
+		//Draw white circle for background of cross
+		drawCircle(positions[0].x, positions[0].y, 35/1.5, "#fff");
+
+		//Draw swinging vector
+		var swing = {x:current.x-last.x, y:current.y-last.y};
+		var rotate_angle = sliderValue*Math.PI/2;
+		var x_p = (Math.cos(rotate_angle)*swing.x - Math.sin(rotate_angle)*swing.y) + last.x;
+		var y_p = (Math.sin(rotate_angle)*swing.x + Math.cos(rotate_angle)*swing.y) + last.y;
+		var lerp_value = Math.abs(Math.sin(rotate_angle));
+		var swing_color = lerp(color_start, color_end, lerp_value);
+		swing.x = x_p;
+		swing.y = y_p;
+		//drawLine(last, swing, 6, "#f60", "round");
+		drawLine(last, swing, 6, "rgb("+swing_color.r+","+swing_color.g+","+swing_color.b+")", "round");
+
+		//Draw the background grid
+		drawGrid(2*gridRadius, "#eee");
+
+		//Draw circles to show past moves and current move
+		for (n=0; n<positions.length-1; n++){
+			spot = positions[n+1];
+			drawCircle(spot.x, spot.y, 2*gridRadius, "rgb(75,84,100)");
+		}
+		drawCircle(swing.x, swing.y, 2*gridRadius, "rgb(0,170,255)");
+		drawCircle(swing.x, swing.y, gridRadius, "rgb(255,48,0)");
+
+		//Draw Target
+		drawCircle(target.x, target.y, 3*gridRadius, "rgb(0, 75, 84)");
+		drawCircle(target.x, target.y, 2*gridRadius, "rgb(295, 58, 0)");
+		drawCircle(current.x, current.y, 3*gridRadius, "rgb(0, 75, 84)");
+
+		//Draw the actual grid
+		drawGrid(gridRadius, "rgba(0, 170, 255, 100)");
+		drawCross(positions[0], 35, 5, "#000");
+		drawSlider(sliderValue, "rgb("+swing_color.r+","+swing_color.g+","+swing_color.b+")");
+
+		//Handle win condition
+		if (Math.round(current.x) == Math.round(target.x) &&
+				Math.round(current.y) == Math.round(target.y)){
+			win = true;
+		}
+
+		//Reset code
+		if (reset == true){
+			index = 0;
+			a = grid[x_center-1][y_center-1];
+			b = grid[x_center][y_center-1];
+			positions = [a, b];
+			moves = [];
+			sliderPosition = 0;
+			last = positions[index];
+			current = positions[index+1];
+			selection = selectTarget();
+			target = grid[selection.x][selection.y];
+			reset = false;
+			win = false;
+		}
+
+		//Do all of the actual move evaluation here
+		if (leftPressed || rightPressed || undoPressed){
+			gameLogic(win);
+		}
+	}
+
+	//Draw a new frame every 10 milliseconds
+	setInterval(draw, 10);
+</script>
+
+</body>
+</html>
