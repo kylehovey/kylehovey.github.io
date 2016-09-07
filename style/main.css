@@ -12,8 +12,17 @@ body {
 	background-size: 3px 3px;
 }
 
+#header {
+	font-family: 'Shadows Into Light', cursive;
+	text-align: center;
+	font-weight: bold;
+	font-size: 4em;
+	color: rgba(15, 67, 123, 0.8);
+	text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+}
+
 #wheelnav-row {
-	margin-top: 18%;
+	margin-top: 10%;
 }
 
 #main-nav {
@@ -40,3 +49,6 @@ body {
 		width: 300px;
 	}
 }
+
+::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
+::selection { background: #5af; color: #fff; text-shadow: none; }
