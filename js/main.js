@@ -7,6 +7,8 @@ $(function() {
 	wheel.slicePathFunction = slicePath().DonutSlice;
 	wheel.markerPathFunction = markerPath().PieLineMarker;
 	wheel.markerEnable = true;
+	wheel.animateeffect = 'linear';
+	wheel.animatetime = 250;
 
 	// Generate nav items
 	var navItems = new Array();
