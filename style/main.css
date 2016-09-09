@@ -74,9 +74,9 @@ body {
 
 .soc {
 	margin-top: 40px;
-	margin-left: 15%;
 	padding: 0;
 	list-style: none;
+	text-align: center;
 }
 
 .soc li {
@@ -107,10 +107,10 @@ body {
 		-webkit-transform: translateZ(0);
 		transform: translateZ(0);
 
-		overflow:hidden;
-		text-decoration:none;
-		text-align:center;
-		display:block;
+		overflow: hidden;
+		text-decoration: none;
+		text-align: center;
+		display: block;
 		position: relative;
 		z-index: 1;
 		width: 24px;
