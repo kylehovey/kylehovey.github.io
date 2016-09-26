@@ -106,16 +106,16 @@ function DrawUtils(id) {
 		]);
 	};
 
-	// Linear interpolate two colors
-	this.lerpColors = function(a, b, t) {
+	// Linear interpolate two vectors of ints
+	this.lerp = function(a, b, t) {
 		// Determine lerp variables
 		var s = 1-t;
 
 		// Return a color inbetween a and b
-		return this.toRGB([
-			Math.round(s*a.R + t*b.R),
-			Math.round(s*a.G + t*b.G),
-			Math.round(s*a.B + t*b.B)
-		]);
+		var out = new Array();
+		for (var i = 0; i < a.length; i++) {
+			out.push(Math.round(s*a[i]) + Math.round(t*b[i]));
+		}
+		return out;
 	};
 };

@@ -8,18 +8,24 @@ $(function() {
 	board.resize();
 
 	// Create fireplace
-	fire = new FirePlace(board.canvas, {
-		cols : 100,
-		wind : 0.000000001,
+	fire = new FirePlace({
+		cols : 50,
+		wind : 1,
 		sigScale : 0.1,
 		sigShift : 50,
 		falloff : 0.9,
-		randLevel : 15
+		randLevel : 10
 	});
 
 	// Add listeners
 	$(window).resize(function(event) {
 		// Resize canvas
 		board.resize();
+
+		// Init fireplace
+		fire.init();
 	});
+
+	// Light fire
+	fire.light();
 });
