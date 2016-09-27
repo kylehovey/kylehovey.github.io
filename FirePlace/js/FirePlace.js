@@ -74,7 +74,7 @@ function FirePlace(settings) {
 			$.each(self.grid, function(i, col) {
 				$.each(col, function(j, ember) {
 					// Stoke the fire
-					ember.stoke(self.randLevel * 4/Math.abs((col.length - j)));
+					ember.stoke(self.randLevel*col.length/(col.length - j));
 
 					// Let the wind blow
 					ember.diminish();

@@ -17,7 +17,7 @@ $(function() {
 		sigScale : 0.1,
 		sigShift : 50,
 		falloff : 0.9,
-		randLevel : 10
+		randLevel : 2
 	});
 
 	// Add listeners
