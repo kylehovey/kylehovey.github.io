@@ -12,7 +12,6 @@ function FirePlace(settings, board) {
 	this.sigShift = (settings.sigShift === undefined) ? 50 : settings.sigShift;
 	this.falloff = (settings.falloff === undefined) ? 0.9 : settings.falloff;
 	this.randLevel = (settings.randLevel === undefined) ? 15 : settings.randLevel;
-	this.dt = .001;
 
 	// Wind function
 	this.windLevel = genSmoothWave(this.wind);
@@ -30,9 +29,13 @@ function FirePlace(settings, board) {
 	// Initialize internal random level and time
 	this.oxygen = this.randLevel;
 	this.t = 0;
+	this.dt = .1;
 
 	// Initialize the fireplace
 	this.init = function() {
+		// Reset time
+		this.t = 0;
+
 		// Create the grid
 		this.grid = new Array();
 
@@ -81,16 +84,22 @@ function FirePlace(settings, board) {
 					var hPos = self.grid.length/2 - i;
 					gradient *= Math.exp(-Math.pow(hPos, 2)/self.grid.length);
 
+					// Let the wind blow
+					gradient *= self.windLevel(self.t);
+
 					// Stoke the fire
 					ember.stoke(self.randLevel*gradient);
 
-					// Let the wind blow
+					// Let the fire die down
 					ember.diminish();
 
 					// Reflect on the world in color
 					ember.draw();
 				});
 			});
+
+			// Increment time
+			self.t += self.dt;
 		}, 100);
 	}
 

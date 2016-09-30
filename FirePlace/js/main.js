@@ -14,7 +14,7 @@ $(function() {
 		sigScale : 0.1,
 		sigShift : 50,
 		falloff : 0.9,
-		randLevel : 4
+		randLevel : 8
 	}, board);
 
 	// Add listeners
