@@ -1,9 +1,6 @@
 // Javascript onload
 
 $(function() {
-	// Create vignette
-	// vignette = new Vignette("#vignette", "#111", 20);
-
 	// Initialize drawing tools
 	board = new DrawUtils("#drawing-board");
 
@@ -23,7 +20,6 @@ $(function() {
 	// Add listeners
 	$(window).resize(function(event) {
 		// Resize canvas
-		// vignette.resize();
 		board.resize();
 
 		// Init fireplace
