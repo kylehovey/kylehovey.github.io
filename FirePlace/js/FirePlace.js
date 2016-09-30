@@ -2,7 +2,7 @@
 //
 // Author: Kyle Hovey
 
-function FirePlace(settings) {
+function FirePlace(settings, board) {
 	// Default parameters
 	this.cols = (settings.cols === undefined) ? 100 : settings.cols;
 
@@ -24,6 +24,9 @@ function FirePlace(settings) {
 		hot : [255, 144, 0, 1]
 	} : settings.color;
 
+	// Drawing board
+	this.board = board;
+
 	// Initialize internal random level and time
 	this.oxygen = this.randLevel;
 	this.t = 0;
@@ -34,8 +37,8 @@ function FirePlace(settings) {
 		this.grid = new Array();
 
 		// Determine the width of a cell and the amount of rows
-		var cellWidth = Math.round(board.canvas.width/this.cols);
-		var rows = Math.round(board.canvas.height/cellWidth);
+		var cellWidth = Math.round(this.board.canvas.width/this.cols);
+		var rows = Math.round(this.board.canvas.height/cellWidth);
 
 		// For each column
 		for (var x = 0; x < this.cols; x++) {
@@ -68,7 +71,7 @@ function FirePlace(settings) {
 		// Start looping process
 		this.blaze = setInterval(function() {
 			// Clear the board
-			board.clear();
+			self.board.clear();
 			
 			// Update the fire
 			$.each(self.grid, function(i, col) {

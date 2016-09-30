@@ -9,13 +9,13 @@ $(function() {
 
 	// Create fireplace
 	fire = new FirePlace({
-		cols : 50,
+		cols : 60,
 		wind : 1,
 		sigScale : 0.1,
 		sigShift : 50,
 		falloff : 0.9,
 		randLevel : 4
-	});
+	}, board);
 
 	// Add listeners
 	$(window).resize(function(event) {
