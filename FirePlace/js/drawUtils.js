@@ -93,7 +93,7 @@ function DrawUtils(id) {
 
 	// Convert a 3-element array of color values into rgb()
 	this.toRGB = function(color) {
-		return "rgb(" + color.join(",") + ")";
+		return "rgba(" + color.join(",") + ")";
 	};
 	
 	// Return a color along a wheel
@@ -111,11 +111,16 @@ function DrawUtils(id) {
 		// Determine lerp variables
 		var s = 1-t;
 
-		// Return a color inbetween a and b
+		// LERP RGB components
 		var out = new Array();
-		for (var i = 0; i < a.length; i++) {
+		for (var i = 0; i < 3; i++) {
 			out.push(Math.round(s*a[i]) + Math.round(t*b[i]));
 		}
+		
+		// Alpha channel must remain a float
+		out.push(s*a[3] + t*b[3]);
+
+		// Return the color array
 		return out;
 	};
 };

@@ -18,11 +18,11 @@ function FirePlace(settings) {
 	this.windLevel = genSmoothWave(this.wind);
 
 	// Default colors
-	this.colors = {
-		cold : [0, 0, 0],
-		warm : [255, 48, 0],
-		hot : [255, 144, 0]
-	};
+	this.colors = (settings.color === undefined) ? {
+		cold : [0, 0, 0, 0],
+		warm : [255, 48, 0, 1],
+		hot : [255, 144, 0, 1]
+	} : settings.color;
 
 	// Initialize internal random level and time
 	this.oxygen = this.randLevel;
@@ -73,8 +73,13 @@ function FirePlace(settings) {
 			// Update the fire
 			$.each(self.grid, function(i, col) {
 				$.each(col, function(j, ember) {
+					// Shape the fire
+					var gradient = col.length/(col.length - j);
+					var hPos = self.grid.length/2 - i;
+					gradient *= Math.exp(-Math.pow(hPos, 2)/self.grid.length);
+
 					// Stoke the fire
-					ember.stoke(self.randLevel*col.length/(col.length - j));
+					ember.stoke(self.randLevel*gradient);
 
 					// Let the wind blow
 					ember.diminish();
@@ -102,32 +107,29 @@ function FirePlace(settings) {
 		} else if ((settings.sigScale !== undefined)) {
 			// Update parameter
 			this.sigScale = settings.sigScale;
+			var newSigmoid = genSigmoid(this.sigScale, this.sigShift);
 
 			// Update grid
-			$.each(this.grid, function(i, col) {
-				$.each(col, function(i, ember) {
-					// Setting dependant
-				});
+			this.eachEmber(function(ember) {
+				ember.sigmoid = newSigmoid;
 			});
 		} else if ((settings.sigShift !== undefined)) {
 			// Update parameter
 			this.sigShift = settings.sigShift;
+			var newSigmoid = genSigmoid(this.sigScale, this.sigShift);
 
 			// Update grid
-			$.each(this.grid, function(i, col) {
-				$.each(col, function(i, ember) {
-					// Setting dependant
-				});
+			this.eachEmber(function(ember) {
+				ember.sigmoid = newSigmoid;
 			});
 		} else if ((settings.falloff !== undefined)) {
 			// Update parameter
 			this.falloff = settings.falloff;
+			var newFalloff = this.falloff;
 
 			// Update grid
-			$.each(this.grid, function(i, col) {
-				$.each(col, function(i, ember) {
-					// Setting dependant
-				});
+			this.eachEmber(function(ember) {
+				ember.falloff = newFalloff;
 			});
 		} else if ((settings.randLevel !== undefined)) {
 			// Update parameter
@@ -135,6 +137,25 @@ function FirePlace(settings) {
 
 			// Set new oxygen level
 			this.oxygen = this.randLevel;
+		} else if ((settings.colors !== undefined)) {
+			// Update parameter
+			this.colors = settings.colors;
+			var newColor = this.colors;
+
+			// Update grid
+			this.eachEmber(function(ember) {
+				ember.colors = newColor;
+			});
 		}
 	}
+
+	// Apply a function to each ember
+	this.eachEmber = function(emberMap) {
+			$.each(this.grid, function(i, col) {
+				$.each(col, function(i, ember) {
+					// Apply Function
+					emberMap(ember);
+				});
+			});
+	};
 };
