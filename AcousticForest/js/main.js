@@ -1,10 +1,19 @@
 // Javascript onload
 
 $(function() {
+	// Initialize the analyzer context object
+	audioTools = new AudioContext();
+	
 	// Grab our audio element
 	audio = document.getElementById("main-track");
 
-	// Listeners to make things easy
+	// Create analyser
+	analyser = new AudioAnalyser(audio);
+
+	// Play audio
+	audio.play();
+
+	// LISTENERS
 	$(window).on('keyup', function(event) {
 		if (event.keyCode == 0 || event.keyCode == 32) {
 			// Spacebar to pause/play
