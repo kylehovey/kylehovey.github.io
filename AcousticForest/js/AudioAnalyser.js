@@ -12,6 +12,7 @@ function AudioAnalyser(audio) {
 	// Create analyzer and connect it to media source
 	this.analyser = audioTools.createAnalyser();
 	this.source.connect(this.analyser);
+	this.source.connect(audioTools.destination);
 
 	// Store frequency data
 	this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);

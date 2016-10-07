@@ -2,7 +2,7 @@
 
 $(function() {
 	// Initialize the analyzer context object
-	audioTools = new AudioContext();
+	audioTools = new (window.AudioContext || window.webkitAudioContext)();
 	
 	// Grab our audio element
 	audio = document.getElementById("main-track");
