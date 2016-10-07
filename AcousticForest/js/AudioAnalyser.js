@@ -16,4 +16,5 @@ function AudioAnalyser(audio) {
 
 	// Store frequency data
 	this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
+	this.analyser.this.analyser.getByteFrequencyData(this.analyser.frequencyData);
 };
