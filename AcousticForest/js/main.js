@@ -43,8 +43,8 @@ $(function() {
 	// For each color, create a mountain
 	for (var i = 1; i < colors.length + 1; i++) {
 		range.push(new Mountain({
-			height : draw.canvas.height/(4*i),
-			offset : draw.canvas.height/(3*i),
+			height : draw.canvas.height/(2*i),
+			offset : draw.canvas.height/(5*i),
 			randLevel : 0.5,
 			randFalloff : 0.9,
 			points : 200,

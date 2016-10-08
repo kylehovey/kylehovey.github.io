@@ -13,14 +13,14 @@ function Mountain(options) {
 
 	// Temporary
 	this.fStart = 0.5;
-	this.fEnd = 1;
+	this.fEnd = 0.7;
 
 	// Begin by procedurally generating mountain points
 	var heightMap = new Array();
 
 	// Push back starting points
 	for (var i = 0; i < 3; i++) {
-		heightMap.push(-1 + 2*Math.random());
+		heightMap.push(Math.random());
 	}
 
 	// While there aren't enough points
@@ -34,7 +34,7 @@ function Mountain(options) {
 			var avg = (heightMap[i] + heightMap[i + 1])/2;
 
 			// Add random value to it
-			avg += this.randLevel*(-1 + 2*Math.random());
+			avg += this.randLevel*Math.random();
 
 			// Push back values
 			newMap.push(heightMap[i]);
@@ -54,10 +54,19 @@ function Mountain(options) {
 	// Save heightmap
 	this.heightMap = heightMap;
 
+	// Modified map for animation
+	this.modMap = new Array();
+	for (var item in this.heightMap) {
+		this.modMap.push(item);
+	}
+
+	// Modified offset for animation
+	this.modOffset = this.offset;
+
 	// Method to render mountain
-	this.renderMountain = function(heightAugment = []) {
+	this.renderMountain = function() {
 		// Find the x step
-		var dx = draw.canvas.width/this.heightMap.length + 0.1;
+		var dx = draw.canvas.width/this.modMap.length + 0.1;
 
 		// Begin path
 		draw.ctx.beginPath();
@@ -65,14 +74,14 @@ function Mountain(options) {
 		// Move to first point
 		draw.ctx.moveTo(
 			0,
-			draw.canvas.height - (1 - this.heightMap[0])*this.height - this.offset
+			draw.canvas.height - (1 - this.modMap[0])*this.height - this.modOffset
 		);
 
 		// Draw to each point in the mountain
-		for (var i = 0; i < this.heightMap.length; i++) {
+		for (var i = 0; i < this.modMap.length; i++) {
 			draw.ctx.lineTo(
 				i*dx, 
-				draw.canvas.height - (1 - this.heightMap[i])*this.height - this.offset
+				draw.canvas.height - (1 - this.modMap[i])*this.height - this.modOffset
 			);
 		}
 
@@ -86,18 +95,35 @@ function Mountain(options) {
 		draw.ctx.fill();
 	}
 
-	// Modified map for animation
-	this.modMap = this.heightMap;
-
 	// Augment heightMap based upon frequency data
 	this.augment = function() {
 		// Store a normalized version of the frequency data
-		var normedData = normalize(analyser.frequencyData, 255);
-		console.log(normedData);
+		var normedData = normalize(analyser.frequencyData.slice(
+			this.fStart*analyser.frequencyData.length, 
+			this.fEnd*analyser.frequencyData.length
+		), analyser.analyser.fftSize/4);
+
+		// Multiply normedData and heightMap in place to make new modMap
+		for (var i = 0; i < this.heightMap.length; i++) {
+			// Find rough position in heightmap relative to normedData
+			var nInd = Math.round(i*normedData.length/this.heightMap.length);
+
+			// Find scaling constant
+			var modScale = (0.2 + normedData[nInd])/1.2;
+
+			// Write new data to modMap (ensure some data remains)
+			this.modMap[i] = this.heightMap[i]*(1 - modScale);
+
+			// Make sure offset changes too
+			// this.modOffset = this.offset*modScale;
+		}
 	}
 
 	// Update method for animation
 	this.update = function() {
+		// Augment map
+		this.augment();
+
 		// Render mountain
 		this.renderMountain();
 	}
