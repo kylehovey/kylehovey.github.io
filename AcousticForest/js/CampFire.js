@@ -101,6 +101,15 @@ function CampFire(options) {
 	
 	// Update fire
 	this.update = function() {
+		// Store a normalized version of the frequency data
+		var normedData = normalize(analyser.frequencyData.slice(
+			this.fStart*analyser.frequencyData.length, 
+			this.fEnd*analyser.frequencyData.length
+		), 255);
+
+		// Find soundlevel
+		var soundLevel = avg(normedData);
+
 		// For each ember
 		for (var x = 0; x < this.pixelDim[0]; x++) {
 			for (var y = 0; y < this.pixelDim[1]; y++) {
@@ -113,7 +122,6 @@ function CampFire(options) {
 				gradient *= Math.exp(-Math.pow(hPos*15, 2));
 				
 				// Stoke the fire
-				var soundLevel = secAvg(analyser.frequencyData, this.fStart, this.fEnd);
  				ember.stoke(this.randLevel*gradient*soundLevel);
 
 				// Let the wind blow

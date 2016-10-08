@@ -25,16 +25,6 @@ $(function() {
 
 	// Initialize the analyzer context object
 	audioTools = new (window.AudioContext || window.webkitAudioContext)();
-	
-	// Grab our audio element
-	audio = document.getElementById("main-track");
-
-	// Create analyser
-	analyser = new AudioAnalyser(audio);
-
-	// Play audio and start analysis
-	audio.play();
-	analyser.start();
 
 	// Create the environment
 	environment = new Environment();
@@ -42,7 +32,7 @@ $(function() {
 	// Create stars
 	var stars = new Stars({
 		nStars : 200,
-		fWindow : [0.5, 1],
+		fWindow : [0.5, 0.55],
 		glow : 20
 	});
 
@@ -83,8 +73,8 @@ $(function() {
 	var fire = new CampFire({
 		emberWidth : 20,
 		pixelDim : [50, 100],
-		falloff : 0.8,
-		randLevel : 1,
+		falloff : 0.9,
+		randLevel : 50,
 		sigShift : 50,
 		sigScale : 10,
 		colors : [
@@ -121,6 +111,16 @@ $(function() {
 
 	// Start the environment
 	environment.start();
+	
+	// Grab our audio element
+	audio = document.getElementById("main-track");
+
+	// Create analyser
+	analyser = new AudioAnalyser(audio);
+
+	// Play audio and start analysis
+	audio.play();
+	analyser.start();
 
 	// LISTENERS
 	$(window).on('keyup', function(event) {

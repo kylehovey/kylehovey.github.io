@@ -35,7 +35,7 @@ function Stars(options) {
 
 			// Draw it
 			draw.ctx.save();
-			var scale = this.brightMod;
+			var scale = this.brightMod*2;
 			draw.ctx.shadowBlur = star.intensity*scale;
 			draw.ctx.shadowColor = "white";
 			draw.ctx.fillStyle = "rgba(255, 255, 255, " + scale + ")";
@@ -45,8 +45,14 @@ function Stars(options) {
 	};
 
 	this.augment = function() {
+		// Store a normalized version of the frequency data
+		var normedData = normalize(analyser.frequencyData.slice(
+			this.fStart*analyser.frequencyData.length, 
+			this.fEnd*analyser.frequencyData.length
+		), 255);
+
 		// Change brightMod based on frequency sensitivity
-		this.brightMod = secAvg(analyser.frequencyData, this.fStart, this.fEnd);
+		this.brightMod = avg(normedData);
 	};
 
 	// Update method for animation
