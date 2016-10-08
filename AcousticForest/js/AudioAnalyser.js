@@ -17,4 +17,26 @@ function AudioAnalyser(audio) {
 	// Store frequency data
 	this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
 	this.analyser.getByteFrequencyData(this.frequencyData);
+
+	// Start analysis
+	this.start = function() {
+		// Save a reference to this
+		var self = this;
+
+		// Start updating frequency data at 60Hz
+		this.runId = setInterval(function() {
+			// Update frequency data
+			self.analyser.getByteFrequencyData(self.frequencyData);
+		}, 17);
+	}
+
+	// Stop analysis
+	this.stop = function() {
+		clearInterval(this.runId);
+	}
+
+	// Find the average of a window of frequencies
+	this.level = function(start = 0, end = 1) {
+		return secAvg(this.frequencyData, start, end);
+	}
 };
