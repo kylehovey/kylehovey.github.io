@@ -10,10 +10,9 @@ function Mountain(options) {
 	this.randFalloff = (options.randFallOff || 0.5);
 	this.points = options.points;
 	this.color = (options.color || "#204");
-
-	// Temporary
-	this.fStart = 0.5;
-	this.fEnd = 0.7;
+	this.fStart = options.fWindow[0];
+	this.fEnd = options.fWindow[1];
+	this.scaling = options.scaling;
 
 	// Begin by procedurally generating mountain points
 	var heightMap = new Array();
@@ -60,9 +59,6 @@ function Mountain(options) {
 		this.modMap.push(item);
 	}
 
-	// Modified offset for animation
-	this.modOffset = this.offset;
-
 	// Method to render mountain
 	this.renderMountain = function() {
 		// Find the x step
@@ -74,14 +70,14 @@ function Mountain(options) {
 		// Move to first point
 		draw.ctx.moveTo(
 			0,
-			draw.canvas.height - (1 - this.modMap[0])*this.height - this.modOffset
+			draw.canvas.height - (1 - this.modMap[0])*this.height - this.offset
 		);
 
 		// Draw to each point in the mountain
 		for (var i = 0; i < this.modMap.length; i++) {
 			draw.ctx.lineTo(
 				i*dx, 
-				draw.canvas.height - (1 - this.modMap[i])*this.height - this.modOffset
+				draw.canvas.height - (1 - this.modMap[i])*this.height - this.offset
 			);
 		}
 
@@ -109,13 +105,10 @@ function Mountain(options) {
 			var nInd = Math.round(i*normedData.length/this.heightMap.length);
 
 			// Find scaling constant
-			var modScale = (0.2 + normedData[nInd])/1.2;
+			var modScale = (0.2 + normedData[nInd])/(1.2*this.scaling);
 
 			// Write new data to modMap (ensure some data remains)
 			this.modMap[i] = this.heightMap[i]*(1 - modScale);
-
-			// Make sure offset changes too
-			// this.modOffset = this.offset*modScale;
 		}
 	}
 

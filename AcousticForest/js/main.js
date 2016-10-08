@@ -36,6 +36,15 @@ $(function() {
 		"#111F3A",
 		"#1B2538"
 	];
+
+	// Mountain frequency windows
+	var fWindows = [
+		[0, 0.2],
+		[0.2, 0.4],
+		[0.4, 0.6],
+		[0.6, 0.8],
+		[0.8, 1]
+	];
 	
 	// Create empty mountain range
 	range = new Array();
@@ -44,11 +53,13 @@ $(function() {
 	for (var i = 1; i < colors.length + 1; i++) {
 		range.push(new Mountain({
 			height : draw.canvas.height/(2*i),
-			offset : draw.canvas.height/(5*i),
+			offset : draw.canvas.height/(4*i) + draw.canvas.height/4,
 			randLevel : 0.5,
 			randFalloff : 0.9,
 			points : 200,
-			color : colors[i - 1]
+			color : colors[i - 1],
+			fWindow : fWindows[i - 1],
+			scaling : (i == 0) ? 3 : 1
 		}));
 	}
 
