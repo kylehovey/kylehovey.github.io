@@ -5,9 +5,10 @@
 function Mountain(options) {
 	// Store variables
 	this.height = (options.height || board.canvas.height/2);
+	this.offset = options.offset;
 	this.randLevel = (options.randLevel || 0.1);
 	this.randFalloff = (options.randFallOff || 0.5);
-	this.points = (options.points || 100);
+	this.points = options.points;
 	this.color = (options.color || "#204");
 
 	// Begin by procedurally generating mountain points
@@ -60,14 +61,14 @@ function Mountain(options) {
 		// Move to first point
 		draw.ctx.moveTo(
 			0,
-			draw.canvas.height - (1 - this.heightMap[0])*this.height - 300
+			draw.canvas.height - (1 - this.heightMap[0])*this.height - this.offset
 		);
 
 		// Draw to each point in the mountain
 		for (var i = 0; i < this.heightMap.length; i++) {
 			draw.ctx.lineTo(
 				i*dx, 
-				draw.canvas.height - (1 - this.heightMap[i])*this.height - 300
+				draw.canvas.height - (1 - this.heightMap[i])*this.height - this.offset
 			);
 		}
 
