@@ -48,3 +48,28 @@ function normalize(arr, maxVal) {
 	// Return it
 	return myArr;
 };
+
+// Linear interpolate between two 4-vectors representing rgba
+function lerp(A, B, t) {
+	// Other portion of interval
+	var s = 1 - t;
+
+	// Generate out color
+	var out = new Array();
+
+	// Push back lerped values
+	for (var i = 0; i < 3; i++) {
+		out.push(Math.round(s*A[i] + t*B[i]));
+	}
+
+	// Push alpha channel separately (can't be rounded)
+	out.push(s*A[3] + t*B[3]);
+
+	// return the color
+	return out;
+}
+
+// Convert color 4-vector into string rgba format
+function toRGBA(arr) {
+	return "rgba(" + arr.join(",") + ")";
+}

@@ -25,6 +25,16 @@ $(function() {
 
 	// Initialize the analyzer context object
 	audioTools = new (window.AudioContext || window.webkitAudioContext)();
+	
+	// Grab our audio element
+	audio = document.getElementById("main-track");
+
+	// Create analyser
+	analyser = new AudioAnalyser(audio);
+
+	// Play audio and start analysis
+	audio.play();
+	analyser.start();
 
 	// Create the environment
 	environment = new Environment();
@@ -32,7 +42,7 @@ $(function() {
 	// Create stars
 	var stars = new Stars({
 		nStars : 200,
-		fWindow : [0.8, 1],
+		fWindow : [0.5, 1],
 		glow : 20
 	});
 
@@ -49,8 +59,7 @@ $(function() {
 		[0, 0.2],
 		[0.2, 0.4],
 		[0.4, 0.6],
-		[0.6, 0.8],
-		[0.8, 1]
+		[0.55, 0.65]
 	];
 	
 	// Create empty mountain range
@@ -70,6 +79,26 @@ $(function() {
 		}));
 	}
 
+	// Create a campfire
+	var fire = new CampFire({
+		emberWidth : 20,
+		pixelDim : [50, 100],
+		falloff : 0.8,
+		randLevel : 1,
+		sigShift : 50,
+		sigScale : 10,
+		colors : [
+			[255, 149, 104, 0],
+			[255, 100, 50, 1],
+			[200, 51, 0, 1]
+		],
+		position : [
+			draw.canvas.width/2,
+			draw.canvas.height
+		],
+		fWindow : [0, 0.5]
+	});
+
 	// Add the stars to environment
 	environment.addFeature({
 		feature : stars,
@@ -80,22 +109,18 @@ $(function() {
 	$.each(range, function(i, mountain) {
 		environment.addFeature({
 			feature : mountain,
-			animated : true
+			animated : false
 		});
+	});
+	
+	// Add the campfire
+	environment.addFeature({
+		feature : fire,
+		animated : false
 	});
 
 	// Start the environment
 	environment.start();
-	
-	// Grab our audio element
-	audio = document.getElementById("main-track");
-
-	// Create analyser
-	analyser = new AudioAnalyser(audio);
-
-	// Play audio and start analysis
-	audio.play();
-	analyser.start();
 
 	// LISTENERS
 	$(window).on('keyup', function(event) {

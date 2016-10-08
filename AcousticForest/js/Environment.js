@@ -32,7 +32,7 @@ function Environment() {
 					self.geography[i].feature.update();
 				}
 			}
-		}, 17);
+		}, 20);
 	};
 
 	// Stop animating the environment

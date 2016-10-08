@@ -35,10 +35,10 @@ function Stars(options) {
 
 			// Draw it
 			draw.ctx.save();
-			var scale = Math.random()*this.brightMod;
+			var scale = this.brightMod;
 			draw.ctx.shadowBlur = star.intensity*scale;
 			draw.ctx.shadowColor = "white";
-			draw.ctx.fillStyle = "rgba(255, 255, 255, " + (1 + scale)/2 + ")";
+			draw.ctx.fillStyle = "rgba(255, 255, 255, " + scale + ")";
 			draw.ctx.fillRect(star.location[0], star.location[1], 1, 1);
 			draw.ctx.restore();
 		}
