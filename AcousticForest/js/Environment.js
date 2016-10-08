@@ -7,12 +7,12 @@ function Environment() {
 	this.geography = new Array();
 
 	// Add something to the environment
-	this.addFeature = function(feature, name, animated = true) {
+	this.addFeature = function(feature) {
 		// Add it to the geography
 		this.geography.push({
-			feature : feature,
-			name : name,
-			animated : animated
+			feature : feature.feature,
+			name : feature.name,
+			animated : feature.animated
 		});
 	}
 
@@ -29,7 +29,7 @@ function Environment() {
 				// If animated
 				if (self.geography[i].animated) {
 					// Update the animated item
-					self.geography[i].feature.feature.update();
+					self.geography[i].feature.update();
 				}
 			}
 		}, 17);

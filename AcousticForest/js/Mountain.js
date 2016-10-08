@@ -92,6 +92,8 @@ function Mountain(options) {
 	// Augment heightMap based upon frequency data
 	this.augment = function() {
 		// Store a normalized version of the frequency data
+		var normedData = normalize(analyser.frequencyData, 255);
+		console.log(normedData);
 	}
 
 	// Update method for animation

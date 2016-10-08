@@ -18,7 +18,7 @@ $(function() {
 		},
 		clear : function() {
 			// Clear the canvas
-			this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		}
 	}
 	draw.resize();
@@ -47,7 +47,7 @@ $(function() {
 			offset : draw.canvas.height/(3*i),
 			randLevel : 0.5,
 			randFalloff : 0.9,
-			points : 400,
+			points : 200,
 			color : colors[i - 1]
 		}));
 	}
