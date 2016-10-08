@@ -109,14 +109,14 @@ $(function() {
 	$.each(range, function(i, mountain) {
 		environment.addFeature({
 			feature : mountain,
-			animated : false
+			animated : true
 		});
 	});
 	
 	// Add the campfire
 	environment.addFeature({
 		feature : fire,
-		animated : false
+		animated : true
 	});
 
 	// Start the environment
