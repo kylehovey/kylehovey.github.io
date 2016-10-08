@@ -9,3 +9,9 @@ body {
 #drawing-board {
 	background-color: #0d1628;
 }
+
+#firstTree {
+	position : absolute;
+	bottom : 0px;
+	height : 80%;
+}

@@ -102,6 +102,44 @@ $(function() {
 			animated : true
 		});
 	});
+
+	// Create ground up to the mountain
+	makeGround = function(){
+		// Find height
+		this.height = draw.canvas.height*(1 - 0.2625);
+
+		// Update function
+		this.update = function() {
+
+			// Create gradient
+			var grad = draw.ctx.createLinearGradient(
+				0,
+				draw.canvas.height,
+				0,
+				this.height
+			);
+
+			// Add colors
+			grad.addColorStop(0, "#0F271E");
+			grad.addColorStop(1, "#1B2538");
+
+			// Set fill style and make rectangle
+			draw.ctx.fillStyle = grad;
+			draw.ctx.fillRect(
+				0,
+				this.height,
+				draw.canvas.width,
+				draw.canvas.height - this.height
+			);
+		};
+	};
+	ground = new makeGround();
+
+	// Add the ground
+	environment.addFeature({
+		feature : ground,
+		animated : true
+	});
 	
 	// Add the campfire
 	environment.addFeature({
