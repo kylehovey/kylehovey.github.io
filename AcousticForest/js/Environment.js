@@ -14,7 +14,7 @@ function Environment() {
 			name : feature.name,
 			animated : feature.animated
 		});
-	}
+	};
 
 	// Start animating the environment
 	this.start = function() {
@@ -33,10 +33,10 @@ function Environment() {
 				}
 			}
 		}, 17);
-	}
+	};
 
 	// Stop animating the environment
 	this.stop = function() {
 		clearInterval(this.time);
-	}
-}
+	};
+};

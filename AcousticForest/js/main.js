@@ -29,6 +29,13 @@ $(function() {
 	// Create the environment
 	environment = new Environment();
 
+	// Create stars
+	var stars = new Stars({
+		nStars : 200,
+		fWindow : [0.8, 1],
+		glow : 20
+	});
+
 	// Mountain colors
 	var colors = [
 		"#425172",
@@ -47,7 +54,7 @@ $(function() {
 	];
 	
 	// Create empty mountain range
-	range = new Array();
+	var range = new Array();
 
 	// For each color, create a mountain
 	for (var i = 1; i < colors.length + 1; i++) {
@@ -62,6 +69,12 @@ $(function() {
 			scaling : (i == 1) ? 2 : 1
 		}));
 	}
+
+	// Add the stars to environment
+	environment.addFeature({
+		feature : stars,
+		animated : true
+	});
 
 	// Add the mountains to environment
 	$.each(range, function(i, mountain) {

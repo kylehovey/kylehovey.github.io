@@ -89,7 +89,7 @@ function Mountain(options) {
 		// Fill
 		draw.ctx.fillStyle = this.color;
 		draw.ctx.fill();
-	}
+	};
 
 	// Augment heightMap based upon frequency data
 	this.augment = function() {
@@ -110,7 +110,7 @@ function Mountain(options) {
 			// Write new data to modMap (ensure some data remains)
 			this.modMap[i] = this.heightMap[i]*(1 - modScale/this.scaling);
 		}
-	}
+	};
 
 	// Update method for animation
 	this.update = function() {
@@ -119,5 +119,5 @@ function Mountain(options) {
 
 		// Render mountain
 		this.renderMountain();
-	}
-}
+	};
+};

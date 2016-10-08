@@ -33,7 +33,7 @@ function avg(arr) {
 // Find the sectional average of an array
 function secAvg(arr, start, end) {
 	return avg(arr.slice(arr.length*start, arr.length*end));
-}
+};
 
 // Normalize an array based upon a max value
 function normalize(arr, maxVal) {
@@ -47,4 +47,4 @@ function normalize(arr, maxVal) {
 
 	// Return it
 	return myArr;
-}
+};
