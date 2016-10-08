@@ -53,13 +53,13 @@ $(function() {
 	for (var i = 1; i < colors.length + 1; i++) {
 		range.push(new Mountain({
 			height : draw.canvas.height/(2*i),
-			offset : draw.canvas.height/(4*i) + draw.canvas.height/4,
+			offset : draw.canvas.height/(4*i) + draw.canvas.height/5,
 			randLevel : 0.5,
 			randFalloff : 0.9,
 			points : 200,
 			color : colors[i - 1],
 			fWindow : fWindows[i - 1],
-			scaling : (i == 0) ? 3 : 1
+			scaling : (i == 1) ? 2 : 1
 		}));
 	}
 

@@ -105,10 +105,10 @@ function Mountain(options) {
 			var nInd = Math.round(i*normedData.length/this.heightMap.length);
 
 			// Find scaling constant
-			var modScale = (0.2 + normedData[nInd])/(1.2*this.scaling);
+			var modScale = (0.2 + normedData[nInd])/1.2;
 
 			// Write new data to modMap (ensure some data remains)
-			this.modMap[i] = this.heightMap[i]*(1 - modScale);
+			this.modMap[i] = this.heightMap[i]*(1 - modScale/this.scaling);
 		}
 	}
 
