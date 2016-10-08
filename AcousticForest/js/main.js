@@ -44,18 +44,24 @@ $(function() {
 	for (var i = 1; i < colors.length + 1; i++) {
 		range.push(new Mountain({
 			height : draw.canvas.height/(4*i),
-			offset : draw.canvas.height/3,
-			randLevel : 0.2,
+			offset : draw.canvas.height/(3*i),
+			randLevel : 0.5,
 			randFalloff : 0.9,
 			points : 400,
 			color : colors[i - 1]
 		}));
 	}
 
-	// Render the mountains
+	// Add the mountains to environment
 	$.each(range, function(i, mountain) {
-		mountain.renderMountain();
+		environment.addFeature({
+			feature : mountain,
+			animated : true
+		});
 	});
+
+	// Start the environment
+	environment.start();
 	
 	// Grab our audio element
 	audio = document.getElementById("main-track");

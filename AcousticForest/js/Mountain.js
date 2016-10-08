@@ -11,12 +11,16 @@ function Mountain(options) {
 	this.points = options.points;
 	this.color = (options.color || "#204");
 
+	// Temporary
+	this.fStart = 0.5;
+	this.fEnd = 1;
+
 	// Begin by procedurally generating mountain points
 	var heightMap = new Array();
 
 	// Push back starting points
 	for (var i = 0; i < 3; i++) {
-		heightMap.push(Math.random());
+		heightMap.push(-1 + 2*Math.random());
 	}
 
 	// While there aren't enough points
@@ -30,7 +34,7 @@ function Mountain(options) {
 			var avg = (heightMap[i] + heightMap[i + 1])/2;
 
 			// Add random value to it
-			avg += this.randLevel*Math.random();
+			avg += this.randLevel*(-1 + 2*Math.random());
 
 			// Push back values
 			newMap.push(heightMap[i]);
@@ -80,5 +84,19 @@ function Mountain(options) {
 		// Fill
 		draw.ctx.fillStyle = this.color;
 		draw.ctx.fill();
+	}
+
+	// Modified map for animation
+	this.modMap = this.heightMap;
+
+	// Augment heightMap based upon frequency data
+	this.augment = function() {
+		// Store a normalized version of the frequency data
+	}
+
+	// Update method for animation
+	this.update = function() {
+		// Render mountain
+		this.renderMountain();
 	}
 }

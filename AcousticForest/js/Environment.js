@@ -18,11 +18,18 @@ function Environment() {
 
 	// Start animating the environment
 	this.start = function() {
+		// Save a reference to this
+		var self = this;
 		this.time = setInterval(function() {
+			// Clear the canvas
+			draw.clear();
+
 			// For each geographic feature
-			for (var featureInfo in this.geography) {
-				if (featureInfo.animated) {
-					featureInfo.feature.update();
+			for (var i = 0; i < self.geography.length; i++) {
+				// If animated
+				if (self.geography[i].animated) {
+					// Update the animated item
+					self.geography[i].feature.feature.update();
 				}
 			}
 		}, 17);
