@@ -1,6 +1,9 @@
 // Javascript onload
 
 $(function() {
+	// Hide ending overlay
+	$("#overlay-end").hide();
+
 	// Initialize canvas
 	var canvas = $("#drawing-board")[0];
 
@@ -159,6 +162,14 @@ $(function() {
 	// Play audio and start analysis
 	audio.play();
 	analyser.start();
+
+	// Fade out beginning overlay
+	$("#overlay-begin").fadeOut(13000);
+
+	// Begin timer to fade out at end
+	setTimeout(function() {
+		$("#overlay-end").fadeIn(13000);
+	}, 264000);
 
 	// LISTENERS
 	$(window).on('keyup', function(event) {

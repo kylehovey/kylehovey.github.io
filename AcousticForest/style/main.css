@@ -6,6 +6,34 @@ body {
 	overflow: hidden;
 }
 
+#overlay-begin {
+	position : absolute;
+	height : 100%;
+	width : 100%;
+	background-color: #FFF;
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 4em;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	padding: 200px;
+	color: #111;
+	z-index: 2;
+}
+
+#overlay-end {
+	position : absolute;
+	height : 100%;
+	width : 100%;
+	background-color: #111;
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 4em;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	padding: 200px;
+	color: #FFF;
+	z-index: 2;
+}
+
 #drawing-board {
 	background-color: #0d1628;
 }
@@ -30,7 +58,7 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index:1;
+	z-index: 3;
 	-webkit-animation: snow 1000s linear infinite;
 }
 
