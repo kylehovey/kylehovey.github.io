@@ -36,7 +36,11 @@ function AudioAnalyser(audio) {
 	}
 
 	// Find the average of a window of frequencies
-	this.level = function(start = 0, end = 1) {
-		return secAvg(this.frequencyData, start, end);
+	this.level = function(start = 0, end = 1, normalized = true) {
+		if (normalized) {
+			return normalize(secAvg(this.frequencyData, start, end), 255);
+		} else {
+			return secAvg(this.frequencyData, start, end);
+		}
 	}
 };

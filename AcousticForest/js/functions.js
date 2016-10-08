@@ -62,3 +62,14 @@ function avg(arr) {
 function secAvg(arr, start, end) {
 	return avg(arr.slice(arr.length*start, arr.length*end));
 }
+
+// Normalize an array based upon a max value
+function normalize(arr, maxVal) {
+	// Normalize array
+	for (var i = 0; i < arr.length; i++) {
+		arr[i] /= maxVal;
+	}
+
+	// Return it
+	return arr;
+}

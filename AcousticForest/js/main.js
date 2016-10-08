@@ -10,15 +10,18 @@ $(function() {
 	// Resize to full screen
 	board.resize();
 
+	// Create the environment
+	environment = new Environment();
+
 	// Create fireplace
-	fire = new FirePlace({
-		cols : 60,
-		wind : 1,
-		sigScale : 0.1,
-		sigShift : 50,
-		falloff : 0.7,
-		randLevel : 8
-	}, board);
+	//fire = new FirePlace({
+	//	cols : 100,
+	//	wind : 1,
+	//	sigScale : 0.1,
+	//	sigShift : 50,
+	//	falloff : 0.7,
+	//	randLevel : 8
+	//}, board);
 	
 	// Grab our audio element
 	audio = document.getElementById("main-track");
@@ -27,14 +30,14 @@ $(function() {
 	analyser = new AudioAnalyser(audio);
 
 	// Light fire
-	fire.light();
+	//fire.light();
 
 	// Play audio and start analysis
 	audio.play();
 	analyser.start();
 	
 	// Testing stuff goes here
-	setInterval(function() { fire.randLevel = 30 * analyser.level(0.5, 1) / 80; }, 10)
+	//setInterval(function() { fire.randLevel = 20 * analyser.level(0.5, 1) / 80; }, 10)
 
 	// LISTENERS
 	$(window).on('keyup', function(event) {
@@ -53,6 +56,6 @@ $(function() {
 		board.resize();
 
 		// Init fireplace
-		fire.init();
+		//fire.init();
 	});
 });

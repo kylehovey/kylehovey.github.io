@@ -3,7 +3,7 @@
 // Author: Kyle Hovey
 
 function DrawUtils(id) {
-	// Get canvas
+	// get canvas
 	this.canvas = $(id)[0];
 
 	// Create context

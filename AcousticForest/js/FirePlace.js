@@ -82,7 +82,7 @@ function FirePlace(settings, board) {
 					// Shape the fire
 					var gradient = col.length/(col.length - j);
 					var hPos = self.grid.length/2 - i;
-					gradient *= Math.exp(-Math.pow(hPos, 2)/self.grid.length);
+					gradient *= Math.exp(-Math.pow(hPos, 2)/(self.grid.length*1.5));
 
 					// Let the wind blow
 					// gradient *= self.windLevel(self.t);
