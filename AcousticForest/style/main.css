@@ -1,8 +1,11 @@
-/* Stylesheet for Ulam Spinner
+/* Stylesheet for Acoustic Forest
  * Author: Kyle Hovey
  */
 
 body {
 	overflow: hidden;
+}
+
+#drawing-board {
 	background-color: #0d1628;
 }
