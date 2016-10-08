@@ -119,7 +119,7 @@ function CampFire(options) {
 				// Find gradient modifier
 				var gradient = y/this.pixelDim[1];
 				var hPos = (this.pixelDim[0]/2 - x)/(this.pixelDim[0]);
-				gradient *= Math.exp(-Math.pow(hPos*15, 2));
+				gradient *= Math.exp(-Math.pow(hPos*8, 2));
 				
 				// Stoke the fire
  				ember.stoke(this.randLevel*gradient*soundLevel);
