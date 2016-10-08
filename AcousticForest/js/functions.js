@@ -65,11 +65,14 @@ function secAvg(arr, start, end) {
 
 // Normalize an array based upon a max value
 function normalize(arr, maxVal) {
+	// Create copy
+	var myArr = arr;
+
 	// Normalize array
-	for (var i = 0; i < arr.length; i++) {
-		arr[i] /= maxVal;
+	for (var i = 0; i < myArr.length; i++) {
+		myArr[i] /= maxVal;
 	}
 
 	// Return it
-	return arr;
+	return myArr;
 }

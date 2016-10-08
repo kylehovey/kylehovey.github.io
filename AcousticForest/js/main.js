@@ -1,27 +1,60 @@
 // Javascript onload
 
 $(function() {
+	// Initialize canvas
+	var canvas = $("#drawing-board")[0];
+
+	// Create context
+	var ctx = canvas.getContext("2d");
+
+	// Create object for canvas
+	draw = {
+		canvas : canvas,
+		ctx : ctx,
+		resize : function() {
+			// Resize this canvas to full
+			this.canvas.width = window.innerWidth;
+			this.canvas.height = window.innerHeight;
+		},
+		clear : function() {
+			// Clear the canvas
+			this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+		}
+	}
+	draw.resize();
+
 	// Initialize the analyzer context object
 	audioTools = new (window.AudioContext || window.webkitAudioContext)();
-	
-	// Initialize drawing tools
-	board = new DrawUtils("#drawing-board");
-
-	// Resize to full screen
-	board.resize();
 
 	// Create the environment
 	environment = new Environment();
 
-	// Create fireplace
-	//fire = new FirePlace({
-	//	cols : 100,
-	//	wind : 1,
-	//	sigScale : 0.1,
-	//	sigShift : 50,
-	//	falloff : 0.7,
-	//	randLevel : 8
-	//}, board);
+	// Mountain colors
+	var colors = [
+		"#425172",
+		"#2A3251",
+		"#111F3A",
+		"#1B2538"
+	];
+	
+	// Create empty mountain range
+	range = new Array();
+
+	// For each color, create a mountain
+	for (var i = 1; i < colors.length + 1; i++) {
+		range.push(new Mountain({
+			height: 400/i,
+			randLevel : 0.2,
+			randFalloff : 0.9,
+			points : 400,
+			color : colors[i - 1]
+		}));
+	}
+
+	// Render the mountains
+	$.each(range, function(i, mountain) {
+		mountain.renderMountain();
+	});
 	
 	// Grab our audio element
 	audio = document.getElementById("main-track");
@@ -29,15 +62,9 @@ $(function() {
 	// Create analyser
 	analyser = new AudioAnalyser(audio);
 
-	// Light fire
-	//fire.light();
-
 	// Play audio and start analysis
 	audio.play();
 	analyser.start();
-	
-	// Testing stuff goes here
-	//setInterval(function() { fire.randLevel = 20 * analyser.level(0.5, 1) / 80; }, 10)
 
 	// LISTENERS
 	$(window).on('keyup', function(event) {
@@ -53,9 +80,6 @@ $(function() {
 		}
 	}).resize(function(event) {
 		// Resize canvas
-		board.resize();
-
-		// Init fireplace
-		//fire.init();
+		draw.resize();
 	});
 });

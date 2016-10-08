@@ -8,6 +8,7 @@ function Mountain(options) {
 	this.randLevel = (options.randLevel || 0.1);
 	this.randFalloff = (options.randFallOff || 0.5);
 	this.points = (options.points || 100);
+	this.color = (options.color || "#204");
 
 	// Begin by procedurally generating mountain points
 	var heightMap = new Array();
@@ -28,7 +29,7 @@ function Mountain(options) {
 			var avg = (heightMap[i] + heightMap[i + 1])/2;
 
 			// Add random value to it
-			avg += this.randLevel * Math.random();
+			avg += this.randLevel*Math.random();
 
 			// Push back values
 			newMap.push(heightMap[i]);
@@ -49,4 +50,34 @@ function Mountain(options) {
 	this.heightMap = heightMap;
 
 	// Method to render mountain
+	this.renderMountain = function(heightAugment = []) {
+		// Find the x step
+		var dx = draw.canvas.width/this.heightMap.length + 0.1;
+
+		// Begin path
+		draw.ctx.beginPath();
+
+		// Move to first point
+		draw.ctx.moveTo(
+			0,
+			draw.canvas.height - (1 - this.heightMap[0])*this.height - 300
+		);
+
+		// Draw to each point in the mountain
+		for (var i = 0; i < this.heightMap.length; i++) {
+			draw.ctx.lineTo(
+				i*dx, 
+				draw.canvas.height - (1 - this.heightMap[i])*this.height - 300
+			);
+		}
+
+		// Finish path
+		draw.ctx.lineTo(draw.canvas.width, draw.canvas.height);
+		draw.ctx.lineTo(0, draw.canvas.height);
+		draw.ctx.closePath();
+
+		// Fill
+		draw.ctx.fillStyle = this.color;
+		draw.ctx.fill();
+	}
 }
