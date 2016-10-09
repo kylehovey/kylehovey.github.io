@@ -30,7 +30,7 @@ $(function() {
 	var AudioContext = (window.AudioContext || window.webkitAudioContext || false);
 
 	// Only do things if we can
-	if (AudioContext && !isMobile()) {
+	if (AudioContext) {
 		audioTools = new AudioContext();
 
 		// Create the environment
@@ -174,12 +174,6 @@ $(function() {
 		setTimeout(function() {
 			$("#overlay-end").fadeIn(13000);
 		}, 264000);
-	} else if (isMobile()) {
-		// Browser window not large enough
-		sweetAlert(
-			":(",
-			"Either you are on mobile or the window you are viewing this site with is too small to support all of the elements involved. Try using Chrome on a desktop for best results.",
-			"error");
 	} else {
 		// No Audio context, tell user the sad news
 		sweetAlert(
