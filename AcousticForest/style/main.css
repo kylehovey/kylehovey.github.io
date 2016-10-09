@@ -61,9 +61,30 @@ body {
 	width: 100%;
 	z-index: 3;
 	-webkit-animation: snow 1000s linear infinite;
+	-moz--animation: snow 1000s linear infinite;
+	-ms-animation: snow 1000s linear infinite;
+	animation: snow 1000s linear infinite;
 }
 
 @keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}
+  100% {background-position: 10000px 10000px, 20000px 40000px, -20000px 30000px;}
+}
+
+@-moz-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}
+  100% {background-position: 10000px 10000px, 20000px 40000px, -20000px 30000px;}
+}
+
+@-webkit-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}
+  100% {background-position: 10000px 10000px, 20000px 40000px, -20000px 30000px;}
+}
+
+@-ms-keyframes snow {
   0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
   50% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}
   100% {background-position: 10000px 10000px, 20000px 40000px, -20000px 30000px;}

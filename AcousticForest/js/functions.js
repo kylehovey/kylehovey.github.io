@@ -73,3 +73,12 @@ function lerp(A, B, t) {
 function toRGBA(arr) {
 	return "rgba(" + arr.join(",") + ")";
 }
+
+// See if user is on mobile
+function isMobile() {
+	if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+		return true;
+	} else {
+		return false;
+	}
+}
