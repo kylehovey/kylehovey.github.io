@@ -3,6 +3,7 @@
 $(function() {
 	// Create wheelnav
 	wheel = new wheelnav("main-nav");
+	wheel.colors = colorpalette.oceanfive;
 	wheel.clickModeRotate = false;
 	wheel.slicePathFunction = slicePath().DonutSlice;
 	wheel.markerPathFunction = markerPath().PieLineMarker;
