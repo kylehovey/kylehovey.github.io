@@ -39,7 +39,7 @@ function Stars(options) {
 			draw.ctx.shadowBlur = star.intensity*scale;
 			draw.ctx.shadowColor = "white";
 			draw.ctx.fillStyle = "rgba(255, 255, 255, " + scale + ")";
-			draw.ctx.fillRect(star.location[0], star.location[1], 1, 1);
+			draw.ctx.fillRect(star.location[0] - 1, star.location[1] - 1, 3, 3);
 			draw.ctx.restore();
 		}
 	};
