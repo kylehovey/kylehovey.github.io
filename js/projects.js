@@ -44,5 +44,11 @@ projects = [
 		nav : "Forest",
 		description : "A natural continuation of my FirePlace project and an ode to John Muir and the mountains, I created Acoustic Forest: a music visualizer that uses procedurally generated terrain with unique elements augmented by distinct frequency bands in a song. I decided to go with Muse's \"Exogenesis Symphony Part 3\" which I claim absolutely no rights to and will take down at first request of any proprietor's request. I chose the song because it just so happened that Muse's masterful composition consists of a crescendo of increasing layers of elements, then a decrescendo back out. The structure of the song itself is a mountain in shape, which made it perfect to bring in elements slowly, then bring them out in reverse order. Currently this only runs in Chrome/Safari for desktop, so apologies to mobile users. Granted, this was created in Canvas without WebGL, so expect heavy processor usage.",
 		link : "AcousticForest/index.html"
-	}
+	}/*,
+	{
+		title : "New Years Resolutions (2017)",
+		nav : "Resolutions",
+		description : "This year I decided to make my resolutions more transparent than ever! I created a small static page to keep track of progress on my 2017 New Years resolutions.",
+		link : "Resolutions/index.html"
+	}*/
 ]
