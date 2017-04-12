@@ -51,6 +51,10 @@ li:before {
 	margin-right : 10px;
 }
 
+.done {
+  color: rgb(40, 255, 239);
+}
+
 .done:before {
 	content : "\e067" !important;
 }
