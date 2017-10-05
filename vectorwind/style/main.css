@@ -1,0 +1,22 @@
+body {
+  margin: 0px !important;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  overflow: hidden; }
+
+a {
+  color: #00B7FF; }
+
+input {
+  z-index: 1;
+  margin-top: 10px;
+  border: none;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.7); }
+
+#enter-equation {
+  position: absolute;
+  left: 20px; }
+
+#enter-width {
+  position: absolute;
+  left: 340px; }
