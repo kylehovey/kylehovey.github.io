@@ -3,6 +3,12 @@
 // Author: Kyle Hovey
 
 projects = [
+  {
+    title : "Vector Wind (2017)",
+    nav : "Wind",
+    description : "I was inspired by a Reddit post that used HTML Canvas to create a beautiful vector field visualization. Unfortunately, the poster did not release their source code, so I decided to make my own version. Vector fields are entered by typing in a Javascript function that takes two inputs (x,y) and returns a two-element array. The result is visualized by creating particles that get pushed around in the field like dust in the wind. The source code can be found on my GitHub.",
+    link : "vectorwind/index.html"
+  },
 	{
 		title : "CALSim (2016)",
 		nav : "CALSim",
