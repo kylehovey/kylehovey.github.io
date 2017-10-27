@@ -218,7 +218,7 @@ class GameGrid {
   loadFromJSON(save) {
     this.cells = JSON.parse(save).map(function(row) {
       return row.map(function(info) {
-        cell = new Cell;
+        const cell = new Cell;
         cell.copy(info);
         return cell;
       });
