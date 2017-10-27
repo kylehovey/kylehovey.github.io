@@ -214,6 +214,19 @@ class GameGrid {
 		}.bind(this));
 	}
 
+  // Load board from saved JSON
+  loadFromJSON(save) {
+    this.cells = JSON.parse(save).map(function(row) {
+      return row.map(function(info) {
+        cell = new Cell;
+        cell.copy(info);
+        return cell;
+      });
+    });
+
+    this.draw();
+  }
+
 	//Draw the board
 	draw(){
 		//Clear the canvas

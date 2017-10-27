@@ -180,6 +180,25 @@ $(function(){
 				board.update();
 				board.draw();
 			}, delay);
+    }else if (event.keyCode == 76){
+      swal({
+        title: "Load Cell State",
+        text: "Paste the save JSON below",
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Write something"
+      }, function(inputValue){
+        if (inputValue === false) return false;
+
+        if (inputValue === "") {
+          swal.showInputError("You need to write something!");
+          return false;
+        }
+
+        board.loadFromJSON(save);
+      });
 		}else if (event.keyCode == 67){
 			//Press c to clear
 			if (event.shiftKey){
