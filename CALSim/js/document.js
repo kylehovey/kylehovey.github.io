@@ -197,7 +197,7 @@ $(function(){
           return false;
         }
 
-        board.loadFromJSON(save);
+        board.loadFromJSON(inputValue);
       });
 		}else if (event.keyCode == 67){
 			//Press c to clear
