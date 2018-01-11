@@ -138,19 +138,26 @@ body {
 .soc-facebook {
 	background-color: #3e5b98;
 }
+
 .soc-facebook:before {
 	content: 'b';
 }
+
 .soc-linkedin {
 	background-color: #3371b7;
 }
+
 .soc-linkedin:before {
 	content: 'j';
 }
+
 .soc-github {
 	background-color: #5380c0;
 }
+
 .soc-github:before {
 	content: 'Q';
 }
-=======
+
+.divider {
+}
