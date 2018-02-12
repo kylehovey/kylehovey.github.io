@@ -1,0 +1,25 @@
+{
+  "name": "Resolutions_Generator",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^3.19.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.1",
+    "gulp-esdoc": "^0.4.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-sass": "^3.1.0",
+    "uglifyjs-webpack-plugin": "^1.1.1",
+    "webpack": "^3.8.1",
+    "webpack-stream": "^4.0.0"
+  }
+}

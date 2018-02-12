@@ -1,0 +1,104 @@
+/*
+ * New Years Resolution Stylesheet
+ *
+ * Kyle Hovey
+ */
+
+$header-font: 'IM Fell English SC', serif;
+$resolution-font: 'Acme', sans-serif;
+
+$text-color: rgb(240, 240, 240);
+$success-text: rgb(40, 255, 239);
+$trim: rgb(255, 204, 0);
+$no-progress-color: rgb(119, 119, 119);
+$card-backdrop: rgb(80, 80, 80);
+$background: rgb(63, 31, 31);
+$shadow: rgb(20, 20, 20);
+$resolution-background: linear-gradient(to bottom, rgb(51, 122, 183) 0%, rgb(40, 96, 144));
+
+body {
+	background-image : url(../images/bg.png);
+	-webkit-font-smoothing: antialiased;
+}
+
+h1 {
+	font-family: $header-font !important;
+	color : $text-color !important;
+	margin-top : 25px !important;
+}
+
+header {
+	border-top : 5px solid $trim;
+	margin-bottom : 30px;
+}
+
+#title {
+	background-color : $background;
+	border-radius : 5px;
+	padding-left : 10px;
+	padding-right : 10px;
+	box-shadow : -2px -2px 5px $shadow;
+}
+
+#resolutions {
+	font-family: $resolution-font !important;
+	font-size : 1.2em;
+}
+
+#resolutions-list {
+	padding-top : 15px;
+	padding-bottom : 10px;
+	padding-left : 20px !important;
+	padding-right : 20px !important;
+}
+
+li {
+	display : block;
+
+  &:before {
+    content : "\e157";
+    font-family : 'Glyphicons Halflings';
+    float : left;
+    margin-right : 10px;
+  }
+}
+
+.done {
+  color: $success-text;
+
+  &:before {
+    content : "\e067" !important;
+  }
+}
+
+.resolution {
+	list-style-position : inside;
+	border-radius : 5px;
+	background-image: $resolution-background;
+	box-shadow : -2px -2px 5px $shadow;
+	margin-bottom : 10px;
+	margin-top : 10px;
+	padding : 20px;
+}
+
+.card-container {
+	background-color : $card-backdrop;
+	border-radius : 5px;
+	box-shadow : -2px -2px 5px $shadow;
+	color : $text-color;
+	padding : 25px;
+	overflow : none;
+	margin-bottom : 20px;
+}
+
+.title-text {
+	font-family : 'Acme', sans-serif;
+	font-size : 2em;
+	font-weight : bold;
+}
+
+.progress {
+	margin-top : 10px;
+  margin-bottom: 0px !important;
+	background-color : $no-progress-color !important;
+}

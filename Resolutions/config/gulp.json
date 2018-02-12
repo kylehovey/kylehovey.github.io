@@ -1,0 +1,30 @@
+{
+  "tasks" : {
+    "compileJS" : [
+      {
+        "name" : "app-JS",
+        "opts" : { "production" : false },
+        "src" : "./src/js/index/main.js",
+        "dest" : "./js/app/index",
+        "enabled" : true
+      }
+    ],
+    "compileCSS" : [
+      {
+        "name" : "app-CSS",
+        "opts" : { },
+        "src" : "./src/sass/**/*.scss",
+        "dest" : "./style",
+        "enabled" : true
+      }
+    ],
+    "lintClient" : [
+      {
+        "name" : "app-ESLint",
+        "opts" : { },
+        "src" : "./src/**/*.js",
+        "enabled" : true
+      }
+    ]
+  }
+}

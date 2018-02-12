@@ -1,0 +1,36 @@
+[
+  {
+    "goal" : "Top-Out on 50 Climbs",
+    "progressBar" : true,
+    "unit" : "climbs",
+    "progress" : 0
+  },{
+    "goal" : "Go Skiing 25 Days",
+    "progressBar" : true,
+    "unit" : "days",
+    "progress" : 5
+  },{
+    "goal" : "Find 250 Geocaches",
+    "progressBar" : true,
+    "unit" : "found",
+    "progress" : 16
+  },{
+    "goal" : "Read 3 Fiction Novels",
+    "progressBar" : true,
+    "unit" : "read",
+    "progress" : 0
+  },{
+    "goal" : "Hammock Camp in a Snow Storm",
+    "done" : true
+  },{
+    "goal" : "Design and Manufacture a Printed Circuit Board"
+  },{
+    "goal" : "Design an App That Uses WebGL"
+  },{
+    "goal" : "Finish Godel Escher Bach"
+  },{
+    "goal" : "Run the Mile in Under 7 Minutes"
+  },{
+    "goal" : "Write and Record One Song"
+  }
+]
