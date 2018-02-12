@@ -2,21 +2,25 @@
   {
     "goal" : "Top-Out on 50 Climbs",
     "progressBar" : true,
+    "progressGoal" : 50,
     "unit" : "climbs",
     "progress" : 0
   },{
     "goal" : "Go Skiing 25 Days",
     "progressBar" : true,
+    "progressGoal" : 25,
     "unit" : "days",
     "progress" : 5
   },{
     "goal" : "Find 250 Geocaches",
     "progressBar" : true,
+    "progressGoal" : 250,
     "unit" : "found",
     "progress" : 16
   },{
     "goal" : "Read 3 Fiction Novels",
     "progressBar" : true,
+    "progressGoal" : 3,
     "unit" : "read",
     "progress" : 0
   },{
