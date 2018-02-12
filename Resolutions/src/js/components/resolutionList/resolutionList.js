@@ -31,7 +31,9 @@ export default class ResolutionList {
       <section id="resolution-progress">
         <div class="container">
           <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card-container" id="about-col">
+            <div
+              class="col-xs-10 col-xs-offset-1 card-container"
+              id="about-col">
               <center>
                 <span class="title-text">
                   Progress
@@ -49,7 +51,9 @@ export default class ResolutionList {
       <section id="resolutions">
         <div class="container">
           <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card-container" id="resolutions-col">
+            <div
+              class="col-xs-10 col-xs-offset-1 card-container"
+              id="resolutions-col">
               <ul id="resolutions-list"></ul>
             </div>
           </div>
