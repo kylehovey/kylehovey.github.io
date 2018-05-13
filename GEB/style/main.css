@@ -7,5 +7,14 @@ a {
   color: #00B7FF; }
 
 span {
-  white-space: pre-wrap;
-}
+  white-space: pre-wrap; }
+
+.text-container {
+  height: 500px;
+  overflow-y: scroll;
+  background-color: aliceblue;
+  border: 10px solid aliceblue;
+  border-radius: 10px; }
+
+div.margin-after {
+  margin-bottom: 10px; }
