@@ -4,25 +4,25 @@
     "progressBar" : true,
     "progressGoal" : 50,
     "unit" : "climbs",
-    "progress" : 0
+    "progress" : 16
   },{
     "goal" : "Go Skiing 25 Days",
     "progressBar" : true,
     "progressGoal" : 25,
     "unit" : "days",
-    "progress" : 5
+    "progress" : 13
   },{
     "goal" : "Find 250 Geocaches",
     "progressBar" : true,
     "progressGoal" : 250,
     "unit" : "found",
-    "progress" : 16
+    "progress" : 31
   },{
     "goal" : "Read 3 Fiction Novels",
     "progressBar" : true,
     "progressGoal" : 3,
     "unit" : "read",
-    "progress" : 0
+    "progress" : 2
   },{
     "goal" : "Hammock Camp in a Snow Storm",
     "done" : true
