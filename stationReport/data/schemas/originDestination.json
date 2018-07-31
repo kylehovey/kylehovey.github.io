@@ -1,0 +1,43 @@
+{
+  "type" : "object",
+  "properties" : {
+    "locations" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "minLength" : 1,
+            "maxLength" : 100
+          },
+          "lon" : {
+            "type" : "number",
+            "minimum" : -180,
+            "maximum" : 180
+          },
+          "lat" : {
+            "type" : "number",
+            "minimum" : -90,
+            "maximum" : 90
+          }
+        },
+        "additionalProperties" : false,
+        "required" : [ "name", "lon", "lat" ]
+      }
+    },
+    "traffic" : {
+      "type" : "array",
+      "items" : {
+        "type" : "array",
+        "items" : {
+          "type" : "number",
+          "minimum" : 0,
+          "maximum" : 1000000000
+        }
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "required" : [ "locations", "traffic" ]
+}

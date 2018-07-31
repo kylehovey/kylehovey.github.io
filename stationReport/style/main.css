@@ -1,0 +1,257 @@
+/**
+ * Hamburger icon for expanding/collapsing
+ */
+.hamburger {
+  position: absolute;
+  z-index: 2;
+  margin: 10px;
+  cursor: pointer; }
+
+/**
+ * Control overlay that sits on top
+ */
+.fullsize {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%; }
+
+/**
+ * Control overlay that sits on top
+ */
+.control-overlay {
+  z-index: 2;
+  position: absolute;
+  min-width: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 5px; }
+  .control-overlay.lower-left {
+    bottom: 5px;
+    left: 5px; }
+  .control-overlay.lower-right {
+    bottom: 20px;
+    right: 5px; }
+  .control-overlay > button {
+    margin: 3px; }
+
+/**
+ * Enable style for divs to have card-style background
+ */
+div.card-div {
+  margin-top: 10px !important;
+  padding: 10px !important;
+  background-color: rgba(200, 200, 200, 0.7);
+  border-radius: 5px; }
+
+div.top-space {
+  margin-top: 10px !important; }
+
+div.green-char {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background-color: #528620;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+div.red-char {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background-color: #C42B40;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+/**
+ * Display useful information in a list
+ */
+ul.center-list {
+  list-style: none;
+  margin-top: 10px !important;
+  padding: 10px !important;
+  background-color: rgba(200, 200, 200, 0.7);
+  border-radius: 5px; }
+
+ul > li:last-child {
+  border-bottom: 1px solid #f4f7ef; }
+
+ul li {
+  vertical-align: 0;
+  font-weight: bolder;
+  text-transform: capitalize;
+  border-top: 1px solid #f4f7ef; }
+
+ul span.display-number {
+  vertical-align: middle;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 1.2em;
+  font: bold 2em arial, sans-serif; }
+
+/**
+ * Expand or contract a div located below icon
+ */
+.toggle-section {
+  font-size: 0.7em !important;
+  cursor: pointer; }
+  .toggle-section:before {
+    content: "\e258" !important; }
+  .toggle-section.collapse-icon:before {
+    content: "\e259" !important; }
+
+/**
+ * Horizontal padding
+ */
+.horizontalMargin {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+/**
+ * Overlay CSS
+ */
+.overlay {
+  z-index: 3; }
+  .overlay.vertical-center {
+    display: flex;
+    align-items: center; }
+  .overlay.fullpage-transparent {
+    background: rgba(170, 216, 214, 0.8);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0; }
+
+/**
+ * Top-modal
+ */
+.top-modal {
+  position: relative;
+  z-index: 2; }
+  .top-modal div .top-modal-container {
+    background-color: mintcream;
+    border: 5px solid mintcream;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px; }
+
+/**
+ * Loading animation
+ */
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1); }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1); } }
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1); }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1); } }
+
+.sk-cube-grid {
+  width: 50px;
+  height: 50px;
+  margin: 100px auto; }
+
+.sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #8c74ad;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; }
+  .sk-cube.sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+  .sk-cube.sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; }
+  .sk-cube.sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s; }
+  .sk-cube.sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+  .sk-cube.sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+  .sk-cube.sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; }
+  .sk-cube.sk-cube7 {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s; }
+  .sk-cube.sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+  .sk-cube.sk-cube9 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+
+/* ===== Glyphicon Spinner ===== */
+.fa-spin-custom, .glyphicon-spin {
+  -webkit-animation: spin 1000ms infinite linear;
+  animation: spin 1000ms infinite linear; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+/* ===== Slideout CSS ===== */
+.slideout-menu {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 300px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10; }
+
+.slideout-panel {
+  position: relative;
+  height: 1500px;
+  width: 100%; }
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden; }
+
+.slideout-open .slideout-menu {
+  display: block; }
+
+body {
+  margin: 0; }
+
+/* ===== Button CSS ===== */
+button.btn-smol {
+  padding: 2px !important;
+  margin: 2px !important; }
+
+/* ===== Fontawesome CSS ===== */
+.fa.icon-after {
+  margin-left: 10px; }

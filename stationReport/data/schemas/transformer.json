@@ -1,0 +1,53 @@
+{
+  "type" : "object",
+  "properties" : {
+    "tClass" : {
+      "type" : "string",
+      "minLength" : 1,
+      "maxLength" : 100
+    },
+    "lon" : {
+      "type" : "number",
+      "min" : -180,
+      "max" : 180
+    },
+    "lat" :  {
+      "type" : "number",
+      "minimum" : -90,
+      "maximum" : 90
+    },
+    "voltages" : {
+      "type" : "array",
+      "items" : {
+        "type" : "number",
+        "min" : 0,
+        "max" : 5000,
+        "multipleOf" : 1
+      }
+    },
+    "powerRating" : {
+      "type" : "number",
+      "min" : 0,
+      "max" : 1000000
+    },
+    "phase" : {
+      "type" : "string",
+      "length" : 3
+    },
+    "fpno" : {
+      "type" : "number",
+      "min" : 0,
+      "max" : 1000000000
+    }
+  },
+  "additionalProperties" : false,
+  "required" : [
+    "tClass",
+    "lon",
+    "lat",
+    "voltages",
+    "powerRating",
+    "phase",
+    "fpno"
+  ]
+}

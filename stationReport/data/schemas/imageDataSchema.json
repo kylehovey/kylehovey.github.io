@@ -1,0 +1,16 @@
+{
+  "type" : "array",
+  "items" : {
+    "type" : "object",
+    "properties" : {
+      "path" : {
+        "type" : "string"
+      },
+      "id" : {
+        "type" : "string"
+      }
+    },
+    "additionalProperties" : false,
+    "required" : [ "path", "id" ]
+  }
+}

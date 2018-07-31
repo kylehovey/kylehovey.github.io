@@ -1,0 +1,24 @@
+{
+  "name" : "non WSEV Funded Stations",
+	"stations" : [ 
+    "City Creek East P3-E", 
+    "Harmons City Creek P1", 
+    "Jerry Seiner Nissan", 
+    "Ken Garff Nissan of Orem", 
+    "Ken Garff Nissan of Riverdale", 
+    "Ken Garff Nissan of Salt Lake City", 
+    "Newpark Resort - North Lot", 
+    "Pocatello Nissan Kia", 
+    "REI - Salt Lake City", 
+    "Ron Sayer Nissan", 
+    "Salt Lake City - Street Parking", 
+    "Salt Lake County Government Center", 
+    "Thanksgiving Point - Megaplex Theatres", 
+    "The Gateway - Summer Parking 4C", 
+    "Tim Dahle Nissan Murray", 
+    "Tim Dahle Nissan Southtowne", 
+    "Daybreak - SoDa Row", 
+    "Summit County Library", 
+    "State of Utah MASOB building" 
+  ]
+}

@@ -1,0 +1,66 @@
+body {
+  background-color: #eeddcc !important; }
+
+h1, p {
+  font-family: "Raleway", sans-serif !important;
+  text-align: justify; }
+
+h1 {
+  font-size: 3em !important;
+  text-align: center; }
+
+.chart {
+  height: 500px; }
+
+table.status-table {
+  width: 100%;
+  text-align: center;
+  background-color: #ffecdd;
+  margin-top: 8px;
+  margin-bottom: 8px; }
+  table.status-table > thead {
+    font-weight: bold; }
+  table.status-table td {
+    text-align: center;
+    padding: 5px !important;
+    height: 10px;
+    border-left: 1px solid black; }
+    table.status-table td.selected {
+      background-color: #6aeab0; }
+    table.status-table td:first-child {
+      border-left: 0px; }
+
+.color-key dt, .color-key dd {
+  display: inline;
+  margin-right: 5px; }
+
+.color-key dt:after {
+  content: "\200B"; }
+
+.color-key dt.red div {
+  display: inline-block;
+  background-color: #922;
+  width: 20px;
+  height: 20px; }
+
+.color-key dt.blue div {
+  display: inline-block;
+  background-color: #39F;
+  width: 20px;
+  height: 20px; }
+
+.color-key dt.green div {
+  display: inline-block;
+  background-color: #4EA;
+  width: 20px;
+  height: 20px; }
+
+.key-number {
+  font-weight: bold;
+  color: #4488bb; }
+
+i.bullet {
+  width: 25px; }
+
+i.nudge {
+  padding-left: 6px; }

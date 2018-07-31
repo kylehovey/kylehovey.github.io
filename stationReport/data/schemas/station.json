@@ -1,0 +1,47 @@
+{
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "minLength" : 1,
+      "maxLength" : 300
+    },
+    "lon" : {
+      "type" : "number",
+      "min" : -180,
+      "max" : 180
+    },
+    "lat" :  {
+      "type" : "number",
+      "minimum" : -90,
+      "maximum" : 90
+    },
+    "cost" : {
+      "type" : "number",
+      "minimum" : 0,
+      "maximum" : 1000000
+    },
+    "chargers" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "power" : {
+            "type" : "number",
+            "minimum" : 0,
+            "maximum" : 1000
+          },
+          "level" : {
+            "type" : "number",
+            "multipleOf" : 1,
+            "minimum" : 1,
+            "maximum" : 4
+          }
+        },
+        "required" : [ "power", "level" ],
+        "additionalProperties" : false
+      }
+    }
+  },
+  "required" : [ "name", "lon", "lat", "cost", "chargers" ]
+}
