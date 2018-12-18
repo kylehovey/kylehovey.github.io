@@ -1,6 +1,6 @@
 [
   {
-    "goal" : "Top-Out on 50 Climbs",
+    "goal" : "Top-Out on 50 Climbs (bouldering doesn't count)",
     "progressBar" : true,
     "progressGoal" : 50,
     "unit" : "climbs",
@@ -10,13 +10,13 @@
     "progressBar" : true,
     "progressGoal" : 25,
     "unit" : "days",
-    "progress" : 13
+    "progress" : 14
   },{
     "goal" : "Find 250 Geocaches",
     "progressBar" : true,
     "progressGoal" : 250,
     "unit" : "found",
-    "progress" : 43
+    "progress" : 46
   },{
     "goal" : "Read 3 Fiction Novels",
     "progressBar" : true,
@@ -32,7 +32,12 @@
   },{
     "goal" : "Design an App That Uses WebGL"
   },{
-    "goal" : "Finish Godel Escher Bach"
+    "goal" : "Finish Godel Escher Bach",
+    "progressBar" : true,
+    "progressGoal" : 740,
+    "unit" : "pages",
+    "progress" : 402,
+    "done" : false
   },{
     "goal" : "Run the Mile in Under 7 Minutes"
   },{
