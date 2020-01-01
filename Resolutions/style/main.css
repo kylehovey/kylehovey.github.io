@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 h1 {
-  font-family: "IM Fell English SC", serif !important;
+  font-family: "Bad Script", cursive !important;
   color: #f0f0f0 !important;
   margin-top: 25px !important; }
 
@@ -24,7 +24,7 @@ header {
   box-shadow: -2px -2px 5px #141414; }
 
 #resolutions {
-  font-family: "Acme", sans-serif !important;
+  font-family: "Raleway", serif !important;
   font-size: 1.2em; }
 
 #resolutions-list {
