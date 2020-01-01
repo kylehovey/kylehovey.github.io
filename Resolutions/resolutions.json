@@ -1,46 +1,25 @@
 [
   {
-    "goal" : "Top-Out on 50 Climbs (bouldering doesn't count)",
+    "goal" : "Do 100 Climbs",
     "progressBar" : true,
-    "progressGoal" : 50,
+    "progressGoal" : 100,
     "unit" : "climbs",
-    "progress" : 19
+    "progress" : 0
   },{
-    "goal" : "Go Skiing 25 Days",
-    "progressBar" : true,
-    "progressGoal" : 25,
-    "unit" : "days",
-    "progress" : 14
-  },{
-    "goal" : "Find 250 Geocaches",
-    "progressBar" : true,
-    "progressGoal" : 250,
-    "unit" : "found",
-    "progress" : 53
-  },{
-    "goal" : "Read 3 Fiction Novels",
+    "goal" : "Read 3 Books",
     "progressBar" : true,
     "progressGoal" : 3,
-    "unit" : "read",
-    "progress" : 3,
-    "done" : true
+    "unit" : "books",
+    "progress" : 0
   },{
-    "goal" : "Hammock Camp in a Snow Storm",
-    "done" : true
+    "goal" : "Ship One Personal Project"
   },{
     "goal" : "Design and Manufacture a Printed Circuit Board"
   },{
-    "goal" : "Design an App That Uses WebGL"
-  },{
-    "goal" : "Finish Godel Escher Bach",
-    "progressBar" : true,
-    "progressGoal" : 740,
-    "unit" : "pages",
-    "progress" : 402,
-    "done" : false
+    "goal" : "Take One College Course"
   },{
     "goal" : "Run the Mile in Under 7 Minutes"
   },{
-    "goal" : "Write and Record One Song"
+    "goal" : "Meditate For a Full Day (No Talking)"
   }
 ]
