@@ -1,0 +1,16 @@
+<h1 id="april-1st-2020---post-mortem">April 1st 2020 - Post Mortem</h1>
+<p>(sadly not an April Fool’s joke)</p>
+<hr />
+<h3 id="overview">Overview</h3>
+<p>On March 31st the server started having crashes. This morning I was able to investigate the cause and, to the best of my reckoning, fix the problem.</p>
+<h3 id="details-of-event">Details of Event</h3>
+<p>Beginning roughly March 24th, the Valence Minecraft server was low enough on storage that new backups could not be created. This was overlooked because the <code>dynmap</code> plugin that generates the online map feature for the server was being backed up to the regular rolling <code>zip</code> files, and the size of the generated tiles for that plugin was unexpectedly large. As a result, the last backup available was for March 24th at midnight.</p>
+<p>On March 31st, the server ran out of storage completely. The script that makes the server auto-restart on crash put the server into a boot loop. Since no new files could be created, some undefined behavior occurred. So far, these are what I have identified:</p>
+<ul>
+<li>The <code>paper.yml</code> configuration file was half-completed, indicating that this might have been the last file to have been successfully persisted to disk</li>
+<li>The <code>server.properties</code> file was completely initialized to its base state, meaning that the server probably regenerated some configuration files</li>
+</ul>
+<h3 id="how-it-was-fixed">How it Was Fixed</h3>
+<p>Since configuration files seemed to be the only corruption I have identified so far, I was able to pull good copies from the rolling backup on March 24th and bring them in. I also temporarily removed the <code>dynmap</code> plugin and all of its render so that the backups will be smaller in size. I changed the amount of rolling backups from <code>10</code> to <code>5</code> for the time being until I can be certain I can make more without running the risk of this happening again. I plan on altering the backup script to only back up the server itself, and not data that can be regenerated like <code>dynmap</code> tiles.</p>
+<p>I logged in, and the world seems to be functioning as it should be. Please don’t hesitate to message me if you identify any more problems. I will be working on script updates to avoid this in the future.</p>
+<p>-<code>spel3o</code></p>
