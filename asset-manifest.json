@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.324180ff.chunk.css",
+    "main.css": "/static/css/main.761bc2ba.chunk.css",
     "main.js": "/static/js/main.c62bc7dd.chunk.js",
     "main.js.map": "/static/js/main.c62bc7dd.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5cde6305.js",
@@ -8,7 +8,7 @@
     "static/js/2.e4b382d4.chunk.js": "/static/js/2.e4b382d4.chunk.js",
     "static/js/2.e4b382d4.chunk.js.map": "/static/js/2.e4b382d4.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.324180ff.chunk.css.map": "/static/css/main.324180ff.chunk.css.map",
+    "static/css/main.761bc2ba.chunk.css.map": "/static/css/main.761bc2ba.chunk.css.map",
     "static/js/2.e4b382d4.chunk.js.LICENSE.txt": "/static/js/2.e4b382d4.chunk.js.LICENSE.txt",
     "static/media/8_bit_spaghetti.21c0142a.png": "/static/media/8_bit_spaghetti.21c0142a.png",
     "static/media/acoustic-forest.763c83a8.png": "/static/media/acoustic-forest.763c83a8.png",
@@ -27,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.5cde6305.js",
     "static/js/2.e4b382d4.chunk.js",
-    "static/css/main.324180ff.chunk.css",
+    "static/css/main.761bc2ba.chunk.css",
     "static/js/main.c62bc7dd.chunk.js"
   ]
 }
