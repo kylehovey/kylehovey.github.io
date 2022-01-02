@@ -1,0 +1,4 @@
+[submodule "MATH_5620"]
+  path = MATH_5620
+  url = git@github.com:kylehovey/MATH_5620.git
+  branch = gh-pages
